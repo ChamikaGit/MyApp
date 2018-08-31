@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.rdmns24.chamiapps.rdmns24live.Actvities.NewsfeeddetailsActvity"
+    tools:showIn="@layout/activity_newsfeeddetails_actvity">
+
+    <include layout="@layout/toolbar_news_details"
+        android:id="@+id/toolbarnewsdetails"/>
+
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarnewsdetails"
+        android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:fillViewport="false"
+        android:layout_above="@+id/adView"
+        android:id="@+id/scroll">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/androidimage"
+                android:layout_gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/idNewsImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/logotrain" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/texttitle2"
+                android:paddingTop="10dp"
+                android:gravity="center"
+                android:paddingLeft="5dp">
+                <TextView
+                    android:id="@+id/idnewstitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="newstitle"
+                    android:gravity="center"
+                    android:textColor="#faf700"
+                    android:paddingTop="5dp"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description2"
+                android:paddingTop="10dp">
+                <TextView
+                    android:id="@+id/idnewdescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="description"
+                    android:textStyle="normal"
+                    android:paddingLeft="5dp"
+
+                    android:textColor="@android:color/white"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        android:layout_gravity="center"
+        ads:adUnitId="ca-app-pub-8434077743160830/5117519645">
+    </com.google.android.gms.ads.AdView>
+
+
+
+
+</RelativeLayout>

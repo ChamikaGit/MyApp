@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_aboutus"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:title="About Us"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Ratenow"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:title="Rate to RDMNS.LK"
+        app:showAsAction="never" />
+
+</menu>

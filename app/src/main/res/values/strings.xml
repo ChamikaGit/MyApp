@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RDMNS.LK</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_newsfeeddetails_actvity">News Content</string>
+    <string name="title_activity_time_table">TimeTableActivity</string>
+
+
+
+    //ratestrings
+    <string name="rate_dialog_title">Rate RDMNS.Lk</string>
+    <string name="rate_dialog_message">
+ගුණාත්මක සේවාවක් ලබාදීම සඳහා මෙම සේවාව Rate කර ඔබගේ අදහස් Review ලෙස ඇතුලත් කරන්න..!</string>
+    <string name="rate_dialog_ok">Rate now</string>
+    <string name="rate_dialog_cancel">Remind later</string>
+    <string name="rate_dialog_no">No,Thanks</string>
+</resources>

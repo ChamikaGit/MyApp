@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aandroid="http://schemas.android.com/apk/res-auto"
+    package="com.rdmns24.chamiapps.rdmns24live">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- ##START## OneSignal Permissions -->
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+
+
+
+
+    <!-- Required, makes sure notifications are delivered on time. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!--
+         Required so the device vibrates on receiving a push notification.
+    	 Vibration settings of the device still apply.
+    -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- START: ShortcutBadger -->
+    <!-- Samsung -->
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
+
+    <!-- HTC -->
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
+
+    <!-- Sony -->
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
+
+    <!-- Apex -->
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
+
+    <!-- Solid -->
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
+
+    <!-- Huawei -->
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
+
+    <!-- ZUK -->
+    <uses-permission android:name="android.permission.READ_APP_BADGE" />
+
+    <!-- OPPO -->
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" />
+
+    <!-- EvMe -->
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+
+    <!-- End: ShortcutBadger -->
+    <!-- ##END## OneSignal Permissions -->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Actvities.MainActivity"
+            android:label="RDMNS.LK"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.onesignal.BadgeCount"
+                android:value="ENABLE" />
+        </activity>
+        <activity
+            android:name=".Actvities.NewsfeedActvity"
+            android:label="RDMNS.LK News"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Actvities.NotificationActivity"
+            android:label="Notifications"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Actvities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Actvities.NewsfeeddetailsActvity"
+            android:label="@string/title_activity_newsfeeddetails_actvity"
+            android:parentActivityName=".Actvities.NewsfeedActvity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value="com.chamika.fidenz.rdmns.Actvities.NewsfeedActvity" /> -->
+        </activity>
+        <activity
+            android:name=".Actvities.TimeTableActivity"
+            android:label="Find a train"
+            android:parentActivityName=".Actvities.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Actvities.MainActivity"
+                android:configChanges="orientation"
+                android:screenOrientation="portrait"/>
+        </activity>
+        <activity
+            android:name=".Actvities.NotificationDetailsActvity"
+            android:label="Notification"
+            android:parentActivityName=".Actvities.NotificationActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value="com.chamika.fidenz.rdmns.Actvities.NotificationActivity" /> -->
+        </activity>
+        <activity android:name=".Actvities.Splashscreen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Actvities.IntroActvity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Actvities.AboutusActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+    </application>
+
+</manifest>

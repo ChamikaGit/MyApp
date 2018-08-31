@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RelativelayoutNewsfeed"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        card_view:cardBackgroundColor="#1e1e1e"
+        card_view:cardCornerRadius="25dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp">
+
+                <TextView
+                    android:id="@+id/idNotifiName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/app_name"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/btnmenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_more_vert_white_24dp" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/idNotifiDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="It is  same company can have countries. The formulation and hazard of a product using a generic name may vary between manufacturers in the same country."
+                android:textColor="@android:color/white" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/idTimeandDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/app_name"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/idTimeAgo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/app_name"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#ffd800" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
