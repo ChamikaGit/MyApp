@@ -2,10 +2,12 @@ package com.rdmns24.chamiapps.rdmns24live.Actvities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,8 @@ public class TimeTableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+
+
 
         //overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
 
@@ -47,6 +51,7 @@ public class TimeTableActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         TextView textView = dialog.findViewById(R.id.etNote);
         ImageView imageViewclose = dialog.findViewById(R.id.btnclose);
+        Button btnVisitTimeTable = dialog.findViewById(R.id.btnVisitTimeTable);
 
 //        textdetails = dataNotification.get(position).getNotificationDescription();
 //        String header = dataNotification.get(position).getNotificationTitle();
@@ -66,6 +71,15 @@ public class TimeTableActivity extends AppCompatActivity {
                 Intent intent = new Intent(TimeTableActivity.this,MainActivity.class);
                 startActivity(intent);
                 TimeTableActivity.this.finish();
+            }
+        });
+
+
+        btnVisitTimeTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://eservices.railway.gov.lk"));
+                startActivity(browserIntent);
             }
         });
 
