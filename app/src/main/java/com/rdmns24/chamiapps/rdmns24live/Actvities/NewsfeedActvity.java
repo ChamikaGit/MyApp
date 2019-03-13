@@ -28,6 +28,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.marlonlom.utilities.timeago.TimeAgo;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -39,7 +40,10 @@ import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewsrecentsync;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewssync;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssync.getNewsfeedcallback, NewsfeedAdapter.Getpostion, NewsfeedAdapter_horizontall.mGetpostion, Getrdmnsnewsrecentsync.getNewsfeedrecentcallback {
@@ -367,17 +371,34 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
         dialog.setContentView(R.layout.dialog_custom_notificationdetails_horiz);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(false);
-        TextView textView = dialog.findViewById(R.id.etNote);
+        TextView tvNote = dialog.findViewById(R.id.etNote);
+        TextView tvTime = dialog.findViewById(R.id.etTime);
+        TextView tvTimeAndDate = dialog.findViewById(R.id.idTimeandDate);
+
         ImageView imageViewclose = dialog.findViewById(R.id.btnclose);
 
         String texthoriv = dataBeansrecent.get(NewsItemposition).getNotificationDescription();
+        String textTimeDate = dataBeansrecent.get(NewsItemposition).getCreatedDatetime();
 
 //        textdetails = dataNotification.get(position).getNotificationDescription();
 //        String header = dataNotification.get(position).getNotificationTitle();
 //
 //        textViewheader.setText(header);
 //        textView.setText(textdetails);
-        textView.setText(texthoriv);
+        tvNote.setText(texthoriv);
+        tvTimeAndDate.setText(textTimeDate);
+
+        String giventime =dataBeansrecent.get(NewsItemposition).getCreatedDatetime();
+        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date mdate =simpleDateFormat.parse(giventime);
+            long timeinmillseconds = mdate.getTime();
+            String textago = TimeAgo.using(timeinmillseconds);
+            tvTime.setText(textago);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
         imageViewclose.setOnClickListener(new View.OnClickListener() {
