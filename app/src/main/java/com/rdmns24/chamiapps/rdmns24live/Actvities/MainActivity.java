@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private VideoView mvideoView;
-    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus;
+    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus,mImgbtnlostandfound;
     View sbView;
     boolean misConnected;
     private Sharedprefernce sharedprefernce;
@@ -114,12 +114,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnNotification = findViewById(R.id.btnNotifcation);
         mImgbtnsubmitnews = findViewById(R.id.btnsubmitnews);
         mImgbtnaboutus = findViewById(R.id.btnaboutus);
+        mImgbtnlostandfound = findViewById(R.id.btnlostandfound);
 
         mImgbtnnewsfeed.setOnClickListener(this);
         mImgbtnNotification.setOnClickListener(this);
         mImgbtntimetable.setOnClickListener(this);
         mImgbtnsubmitnews.setOnClickListener(this);
         mImgbtnaboutus.setOnClickListener(this);
+        mImgbtnlostandfound.setOnClickListener(this);
 
 
 //        OneSignal.setSubscription(true);
@@ -195,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                     final Dialog dialog = new Dialog(MainActivity.this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     dialog.setContentView(R.layout.dialog_custom_sendmail);
                     dialog.setCancelable(false);
                     dialog.setCanceledOnTouchOutside(false);
@@ -242,6 +245,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnaboutus:
                 if (isOnline()) {
                     Intent intentNotification = new Intent(MainActivity.this, AboutusActivity.class);
+                    startActivity(intentNotification);
+                } else {
+                    snakbar();
+                }
+
+                break;
+
+            case R.id.btnlostandfound:
+                if (isOnline()) {
+                    Intent intentNotification = new Intent(MainActivity.this, LostAndFoundActvity.class);
                     startActivity(intentNotification);
                 } else {
                     snakbar();
