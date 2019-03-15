@@ -9,12 +9,9 @@ import java.util.List;
 public class Lostfound{
 
     @SerializedName("data")
-    @Expose
     private List<Datum> data = null;
     @SerializedName("status")
-    @Expose
     private Status status;
-    private final static long serialVersionUID = 5492540833280680179L;
 
     public List<Datum> getData() {
         return data;
@@ -35,24 +32,17 @@ public class Lostfound{
     public class Datum implements Serializable
     {
         @SerializedName("rd_item_id")
-        @Expose
         private String rdItemId;
         @SerializedName("title")
-        @Expose
         private String title;
         @SerializedName("description")
-        @Expose
         private String description;
         @SerializedName("item_type")
-        @Expose
         private String itemType;
         @SerializedName("item_date")
-        @Expose
         private String itemDate;
         @SerializedName("datetime")
-        @Expose
         private String datetime;
-        private final static long serialVersionUID = -7038737966199534583L;
 
         public String getRdItemId() {
             return rdItemId;
@@ -107,12 +97,9 @@ public class Lostfound{
     public class Status implements Serializable
     {
         @SerializedName("success")
-        @Expose
         private Boolean success;
         @SerializedName("message")
-        @Expose
         private String message;
-        private final static long serialVersionUID = -2328662451467252628L;
 
         public Boolean getSuccess() {
             return success;

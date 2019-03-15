@@ -11,4 +11,18 @@
     <include layout="@layout/toolbar_lostandfound"
         android:id="@+id/toolbar_news"/>
 
+
+    <ImageView
+        android:id="@+id/imgheader"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_below="@+id/toolbar_news"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imgheader">
+
+    </ScrollView>
+
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.rdmns24.chamiapps.rdmns24live.Actvities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         toobarname = findViewById(R.id.toobarname);
 
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         updateUI();
         loadJSON();
     }
@@ -54,11 +56,28 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
 //            initView_Horizoll();
 //            progressbarhori.setVisibility(View.GONE);
 
+            for (int i=0;i<dataBeansrecent.size();i++){
+
+                if (dataBeansrecent.get(i).getItemType().equalsIgnoreCase("Lost")) {
+                    Log.e("Tag lost", dataBeansrecent.get(i).getTitle());
+                }else {
+                    Log.e("Tag found", dataBeansrecent.get(i).getTitle());
+                }
+            }
+
         } else {
 
             Toast.makeText(getApplicationContext(), "Can't Connect with API", Toast.LENGTH_LONG).show();
 
         }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
 
     }
 }
