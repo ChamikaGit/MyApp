@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intro_background"
     tools:context=".Actvities.LostAndFoundActvity">
 
 
@@ -16,13 +17,17 @@
         android:id="@+id/imgheader"
         android:layout_width="match_parent"
         android:layout_height="220dp"
+        android:background="@android:color/white"
         android:layout_below="@+id/toolbar_news"/>
 
-    <ScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recylerview_lostfound"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        tools:listitem="@layout/row_lostfound_categorie"
         android:layout_below="@+id/imgheader">
 
-    </ScrollView>
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
