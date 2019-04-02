@@ -20,14 +20,38 @@
         android:background="@android:color/white"
         android:layout_below="@+id/toolbar_news"/>
 
+    <ProgressBar
+        android:id="@+id/pbProgressbarNotification"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center|center_vertical"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/imgheader"
+        android:layout_centerHorizontal="true"
+        android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recylerview_lostfound"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/adView"
         android:layout_margin="5dp"
         tools:listitem="@layout/row_lostfound_categorie"
-        android:layout_below="@+id/imgheader">
+        android:layout_below="@+id/pbProgressbarNotification">
 
     </android.support.v7.widget.RecyclerView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        android:layout_gravity="center"
+        ads:adUnitId="ca-app-pub-8434077743160830/5117519645">
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

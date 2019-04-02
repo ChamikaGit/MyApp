@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -23,7 +26,7 @@ import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnstrainlinesync
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationActivity extends AppCompatActivity implements Getrdmnstrainlinesync.getTrainlinecallback, TraineLineAdpter.mGetpostion {
+public class NotificationActivity extends AppCompatActivity implements Getrdmnstrainlinesync.getTrainlinecallback, TraineLineAdpter.mGetpostion,View.OnClickListener {
 
     private TraineLineAdpter traineLineAdpter;
     private Getrdmnstrainlinesync getrdmnstrainlinesync;
@@ -32,13 +35,15 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
     private RecyclerView recyclerViewtrain;
     private ProgressBar progressBar;
     private AdView madView;
+    private RelativeLayout idbtnsettings;
+    private ImageView idbackarrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //
 //        //chage statusbar iconcolors
@@ -56,6 +61,8 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
 
         recyclerViewtrain = findViewById(R.id.recycleviewtrainList);
         progressBar = findViewById(R.id.pbProgressbarTrainline);
+        idbtnsettings= findViewById(R.id.idbtnsettings);
+        idbackarrow = findViewById(R.id.idbackarrow);
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -64,6 +71,9 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
         madView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);
+
+        idbtnsettings.setOnClickListener(this);
+        idbackarrow.setOnClickListener(this);
 
         loadJSON();
         initView();
@@ -123,5 +133,21 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
         super.onBackPressed();
         overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+
+            case R.id.idbtnsettings:
+                Intent intent = new Intent(NotificationActivity.this,NotificationSettingsActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.idbackarrow:
+                finish();
+                break;
+        }
     }
 }

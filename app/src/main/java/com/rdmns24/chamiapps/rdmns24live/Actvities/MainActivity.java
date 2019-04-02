@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private VideoView mvideoView;
-    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus,mImgbtnlostandfound;
+    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus,mImgbtnlostandfound,mImgbtnrailwaysecurity;
     View sbView;
     boolean misConnected;
     private Sharedprefernce sharedprefernce;
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnsubmitnews = findViewById(R.id.btnsubmitnews);
         mImgbtnaboutus = findViewById(R.id.btnaboutus);
         mImgbtnlostandfound = findViewById(R.id.btnlostandfound);
+        mImgbtnrailwaysecurity = findViewById(R.id.btnrailwaysecurity);
 
         mImgbtnnewsfeed.setOnClickListener(this);
         mImgbtnNotification.setOnClickListener(this);
@@ -122,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnsubmitnews.setOnClickListener(this);
         mImgbtnaboutus.setOnClickListener(this);
         mImgbtnlostandfound.setOnClickListener(this);
+        mImgbtnrailwaysecurity.setOnClickListener(this);
 
 
 //        OneSignal.setSubscription(true);
@@ -262,6 +264,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
+            case R.id.btnrailwaysecurity:
+
+                temPopup();
+
+                break;
+
 
         }
     }
@@ -275,6 +283,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             return false;
         }
+    }
+
+    private void temPopup() {
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_custom_railway_securtity);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        TextView textView = dialog.findViewById(R.id.etNote);
+        ImageView imageViewclose = dialog.findViewById(R.id.btnclose);
+        Button btnVisitTimeTable = dialog.findViewById(R.id.btnVisitTimeTable);
+        btnVisitTimeTable.setText("CALL NOW");
+
+        imageViewclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+
+
+        btnVisitTimeTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+"+94112336614"));
+                startActivity(intent);
+            }
+        });
+
+
+        dialog.show();
+
     }
 
 

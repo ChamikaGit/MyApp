@@ -26,6 +26,8 @@
 
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light">-->
 
-
+    <style name="SwitchCompatTheme" >
+        <item name="colorControlActivated">#1976D2</item>
+    </style>
 
 </resources>

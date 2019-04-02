@@ -76,6 +76,24 @@
                 android:background="@drawable/submitnews"
                 />
 
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/btnlostandfound"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/imgbuttonlostandfound"
+                />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/btnrailwaysecurity"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/imgbuttonsecurity"
+                />
+
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -85,17 +103,6 @@
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/imgaboutus"
                 />
-
-
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:id="@+id/btnlostandfound"
-                android:adjustViewBounds="true"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/imgaboutus"
-                />
-
 
         </LinearLayout>
 

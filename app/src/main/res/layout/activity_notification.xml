@@ -9,14 +9,21 @@
     android:orientation="vertical"
     tools:context="com.rdmns24.chamiapps.rdmns24live.Actvities.NotificationActivity">
 
+
+    <include layout="@layout/toolbar_notification"
+        android:id="@+id/toolbar_notification"/>
+
+
     <ProgressBar
         android:id="@+id/pbProgressbarTrainline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
+        android:layout_below="@+id/toolbar_notification"
+        android:indeterminateTint="@android:color/holo_red_dark">
+
+    </ProgressBar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleviewtrainList"

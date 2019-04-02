@@ -29,7 +29,7 @@ public class Lostfound{
         this.status = status;
     }
 
-    public class Datum implements Serializable
+    public static class Datum implements Serializable
     {
         @SerializedName("rd_item_id")
         private String rdItemId;
@@ -43,6 +43,15 @@ public class Lostfound{
         private String itemDate;
         @SerializedName("datetime")
         private String datetime;
+
+        public Datum(String rdItemId, String title, String description, String itemType, String itemDate, String datetime) {
+            this.rdItemId = rdItemId;
+            this.title = title;
+            this.description = description;
+            this.itemType = itemType;
+            this.itemDate = itemDate;
+            this.datetime = datetime;
+        }
 
         public String getRdItemId() {
             return rdItemId;

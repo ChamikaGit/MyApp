@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#212121">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#424242">
+
+
+                <TextView
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:text="SPECIAL NOTICE !"
+                    android:id="@+id/idnotificationtext"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@android:color/white"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"/>
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_close_white_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/btnclose"
+                    android:layout_marginRight="10dp" />
+
+
+
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="මෙම දුරකථන අංකය භාවිත කළ  හැක්කේ පහත අවස්ථාවන් වලදී පමණයි."
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:id="@+id/etNote" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="දුම්රියන් තුල හා දුම්රිය  පරිශ්‍රයක් තුලදී ඇතිවන,"
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1.කලහකාරී අවස්ථාවක්"
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="left"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2.සොරකමක් හෝ ඒ සම්බන්ධ පැමිණිල්ලක්"
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3.දුම්වැටි, මත්ද්‍රව්‍ය හෝ මත්පැන් භාවිතයක්"
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.හිංසාකාරී හැසිරීමක් හෝ වෙනත් ඒ හා සමාන ක්‍රියාවන්"
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5.දුම්රිය දේපල අවභාවිතයක්"
+                        android:textSize="14dp"
+                        android:lineSpacingExtra="2dp"
+                        android:gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+
+
+            </ScrollView>
+
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="43dp"
+                android:text="VISIT ONLINE TIMETABLE"
+                android:id="@+id/btnVisitTimeTable"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="15dp"
+                android:layout_centerInParent="true"
+                android:textSize="10dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/rounded_button_transparent"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

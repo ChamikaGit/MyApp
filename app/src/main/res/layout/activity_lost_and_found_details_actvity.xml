@@ -17,70 +17,70 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
-            android:id="@+id/lin2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#424242"
-            android:orientation="horizontal"
-            android:weightSum="3">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/lin2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:background="#424242"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:weightSum="3">-->
 
-            <TextView
-                android:id="@+id/tvdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="16"
-                android:textColor="@android:color/white"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/tvdate"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:text="16"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="25dp"-->
+                <!--android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:orientation="vertical">-->
 
-                <TextView
-                    android:id="@+id/tvmnth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="January"
-                    android:textColor="@android:color/white"
-                    android:textSize="16dp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tvmnth"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:text="January"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textSize="16dp" />-->
 
-                <TextView
-                    android:id="@+id/tvyear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="2017"
-                    android:textColor="@android:color/white"
-                    android:textSize="22dp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tvyear"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="2017"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textSize="22dp" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <TextView
-                android:id="@+id/tvtime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="10:50 PM"
-                android:textColor="#76FF03"
-                android:textSize="40dp"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/tvtime"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:text="10:50 PM"-->
+                <!--android:textColor="#76FF03"-->
+                <!--android:textSize="40dp"-->
+                <!--android:textStyle="bold" />-->
 
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -95,16 +95,18 @@
         </com.google.android.gms.ads.AdView>
 
 
-        <ProgressBar
-            android:id="@+id/pbProgressbarNotification"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center|center_vertical"
-            android:layout_marginTop="5dp"
-            android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
+        <!--<ProgressBar-->
+            <!--android:id="@+id/pbProgressbarNotification"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_gravity="center|center_vertical"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:indeterminateTint="@android:color/holo_red_dark">-->
+            <!---->
+        <!--</ProgressBar>-->
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleviewNotificationDetails"
+            android:id="@+id/recycleviewLostandFoundDetails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="1dp">

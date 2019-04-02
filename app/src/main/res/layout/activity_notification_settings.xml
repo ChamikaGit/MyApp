@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bggradient"
+    tools:context=".Actvities.NotificationSettingsActivity">
+
+    <include
+        android:id="@+id/toolbar_notification_settings"
+        layout="@layout/toolbar_notification_settings" />
+
+    <RelativeLayout
+        android:id="@+id/id_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/toolbar_notification_settings"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:text="ඔබට තොරතුරු අවශ්‍ය වන දුම්රිය මාර්ග තෝරන්න"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:maxLines="1"
+                android:text="Please select the train lines which you want to get daily updates."
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollview_settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/id_header">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ප්‍රධාන මාර්ගය"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Main Line"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv1"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:text="කොළඹ කොටුව සිට බදුල්ල දක්වා"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toLeftOf="@+id/switch1"
+                        android:background="@color/transparent_text_view" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/SwitchCompatTheme"
+                        android:layout_marginRight="25dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="පුත්තලම මාර්ගය"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="puttalam Line"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv2"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:text="කොළඹ කොටුව සිට පුත්තලම සහ නූර්නගර් දක්වා"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toLeftOf="@+id/switch2"
+                        android:background="@color/transparent_text_view" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/SwitchCompatTheme"
+                        android:layout_marginRight="25dp" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="මුහුදුබඩ මාර්ගය"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Coastal Line"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:text="කොළඹ කොටුව සිට ගාල්ල/මාතර සහ බෙලිඅත්ත දක්වා"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toLeftOf="@+id/switch3"
+                        android:background="@color/transparent_text_view" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/SwitchCompatTheme"
+                        android:layout_marginRight="25dp" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="කැලණිවැලි මාර්ගය"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Kelani Valley Line"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv4"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:text="කොළඹ කොටුව සිට අවිස්සාවේල්ල දක්වා"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toLeftOf="@+id/switch4"
+                        android:background="@color/transparent_text_view" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/SwitchCompatTheme"
+                        android:layout_marginRight="25dp" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/transparent_text_view"
+                        android:rotation="180" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="අනෙකුත් මාර්ගයන්"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Other Line"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv5"
+                            android:layout_width="240dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:fadingEdge="horizontal"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:text="කොළඹ කොටුව සිට මාතලේ / මඩකලපුව / ත්‍රිකුණාමලය / තලෙයිමන්නාරම් තොට සහ කන්කසන්තුරය දක්වා"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toLeftOf="@+id/switch5"
+                        android:background="@color/transparent_text_view" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:theme="@style/SwitchCompatTheme"
+                        android:layout_marginRight="25dp" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/scrollview_settings"
+        android:background="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        android:layout_gravity="center"
+        ads:adUnitId="ca-app-pub-8434077743160830/5117519645">
+    </com.google.android.gms.ads.AdView>
+
+
+
+</RelativeLayout>

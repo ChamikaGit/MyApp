@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/intro_background"
+    tools:context=".Actvities.InstructionActvity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+
+        <RelativeLayout
+            android:id="@+id/description2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/idnewdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="@string/instruction_text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/white"
+                android:textStyle="normal" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -92,7 +92,7 @@
             android:configChanges="orientation"
             android:label="Notifications"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Actvities.MainActivity" />
@@ -161,8 +161,19 @@
         <activity
             android:name=".Actvities.LostAndFoundActvity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-        <activity android:name=".Actvities.LostAndFoundDetailsActvity"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".Actvities.LostAndFoundDetailsActvity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".Actvities.InstructionActvity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Actvities.NotificationSettingsActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>
