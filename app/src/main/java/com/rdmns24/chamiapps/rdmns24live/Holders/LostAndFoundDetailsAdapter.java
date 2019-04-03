@@ -1,14 +1,18 @@
 package com.rdmns24.chamiapps.rdmns24live.Holders;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.rdmns24.chamiapps.rdmns24live.Actvities.LostAndFoundDetailsActvity;
 import com.rdmns24.chamiapps.rdmns24live.Helpers.Consts;
 import com.rdmns24.chamiapps.rdmns24live.Models.Lostfound;
 import com.rdmns24.chamiapps.rdmns24live.Models.Newsfeed;
@@ -28,15 +32,17 @@ public class LostAndFoundDetailsAdapter extends RecyclerView.Adapter<LostAndFoun
     private Context context;
     private Getpostion getpostion;
     private String state;
+    private Activity activity;
 
     public void setState(String state) {
         this.state = state;
     }
 
-    public LostAndFoundDetailsAdapter(List<Lostfound.Datum> listLostFound, Context context, Getpostion getpostion) {
+    public LostAndFoundDetailsAdapter(List<Lostfound.Datum> listLostFound, Context context, Getpostion getpostion, Activity activity) {
         this.listLostFound = listLostFound;
         this.context = context;
         this.getpostion = getpostion;
+        this.activity =activity;
     }
 
 
@@ -138,6 +144,38 @@ public class LostAndFoundDetailsAdapter extends RecyclerView.Adapter<LostAndFoun
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     getpostion.getposition(position);
+
+
+
+                    final Dialog dialog = new Dialog(activity);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.dialog_custom_notificationdetails);
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.setCancelable(false);
+                    TextView textView = dialog.findViewById(R.id.etNote);
+                    TextView textViewheader = dialog.findViewById(R.id.idnotificationtext);
+                    ImageView imageViewclose = dialog.findViewById(R.id.btnclose);
+
+
+                    String textdetails = listLostFound.get(position).getDescription();
+                    String header = listLostFound.get(position).getTitle();
+
+                    textViewheader.setText(header);
+                    textView.setText(textdetails);
+
+                    imageViewclose.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+                    dialog.show();
+
+
+
+
 
                 }
             });

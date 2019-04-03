@@ -41,7 +41,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     private LoastandfoundAdapter loastandfoundAdapter;
     private ArrayList<LostfoundItem> lostfoundItemArrayList;
     private ProgressBar pbLostFound;
-    private ImageView idbackarrow;
+    private ImageView idbackarrow,idthreedots;
     private AdView adView;
 
 
@@ -54,6 +54,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
         recylerview_lostfound = findViewById(R.id.recylerview_lostfound);
         pbLostFound = findViewById(R.id.pbProgressbarNotification);
         idbackarrow = findViewById(R.id.idbackarrow);
+        idthreedots = findViewById(R.id.idthreedots);
 
 
         pbLostFound.setVisibility(View.VISIBLE);
@@ -87,6 +88,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     }
 
     private void updateUI() {
+        idthreedots.setVisibility(View.GONE);
         toobarname.setText("Lost And Found");
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recylerview_lostfound.setLayoutManager(layoutManager);

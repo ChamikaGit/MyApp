@@ -31,7 +31,7 @@
                 android:gravity="left"
                 android:maxLines="1"
                 android:text="ඔබට තොරතුරු අවශ්‍ය වන දුම්රිය මාර්ග තෝරන්න"
-                android:textColor="@android:color/white"
+                android:textColor="#7397cd"
                 android:textSize="14sp" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:gravity="left"
                 android:maxLines="1"
                 android:text="Please select the train lines which you want to get daily updates."
-                android:textColor="@android:color/white"
+                android:textColor="#7397cd"
                 android:textSize="12sp"
                 android:textStyle="normal" />
 
@@ -54,7 +54,10 @@
         android:id="@+id/scrollview_settings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/id_header">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/id_header"
+        android:layout_above="@+id/adView">
 
 
         <RelativeLayout
@@ -65,8 +68,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -487,8 +488,7 @@
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/scrollview_settings"
-        android:background="@android:color/black"
+        android:background="@android:color/transparent"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"

@@ -1,5 +1,6 @@
 package com.rdmns24.chamiapps.rdmns24live.Actvities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +33,7 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
     List<Lostfound.Datum> fetchFoundList = new ArrayList<>();
     List<Lostfound.Datum> fetchLostList = new ArrayList<>();
     private AdView adView;
-    private ImageView idbackarrow;
+    private ImageView idbackarrow,idthreedots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
         recylerview_lostandfounddetails = findViewById(R.id.recycleviewLostandFoundDetails);
 
         idbackarrow = findViewById(R.id.idbackarrow);
+        idthreedots = findViewById(R.id.idthreedots);
+
 
         getDataFromIntent();
         updateUI();
@@ -71,6 +75,8 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
     }
 
     private void updateUI() {
+        idthreedots.setVisibility(View.GONE);
+
         if (state.equalsIgnoreCase("lost")) {
             toobarname.setText("Lost Items");
             lostFoundResult(state);
@@ -94,7 +100,7 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
             }
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             recylerview_lostandfounddetails.setLayoutManager(layoutManager);
-            loastandfoundDetailsAdapter = new LostAndFoundDetailsAdapter(fetchFoundList, getApplicationContext(), this);
+            loastandfoundDetailsAdapter = new LostAndFoundDetailsAdapter(fetchFoundList, getApplicationContext(), this,this);
             loastandfoundDetailsAdapter.setState(state);
             recylerview_lostandfounddetails.setAdapter(loastandfoundDetailsAdapter);
         } else {
@@ -111,7 +117,7 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(this);
                 recylerview_lostandfounddetails.setLayoutManager(layoutManager);
-                loastandfoundDetailsAdapter = new LostAndFoundDetailsAdapter(fetchLostList, getApplicationContext(), this);
+                loastandfoundDetailsAdapter = new LostAndFoundDetailsAdapter(fetchLostList, getApplicationContext(), this,this);
                 loastandfoundDetailsAdapter.setState(state);
                 recylerview_lostandfounddetails.setAdapter(loastandfoundDetailsAdapter);
 
@@ -122,6 +128,5 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
 
     @Override
     public void getposition(int NewsItemposition) {
-
     }
 }
