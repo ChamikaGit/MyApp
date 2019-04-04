@@ -1,12 +1,17 @@
 package com.rdmns24.chamiapps.rdmns24live.Actvities;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -158,7 +163,46 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
         }
         if (LostItemposition==2){
 
-            Toast.makeText(getApplicationContext(),"3",Toast.LENGTH_LONG).show();
+
+
+            final Dialog dialog = new Dialog(LostAndFoundActvity.this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_custom_sendmail);
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
+            Button dialogButtonyes = dialog.findViewById(R.id.btndilogyes);
+            ImageView dilogButtonNo = dialog.findViewById(R.id.btnclose);
+            final EditText editetextsubject = dialog.findViewById(R.id.etsubject);
+            final EditText editextcompasemail = dialog.findViewById(R.id.etcomposeemail);
+
+
+            dialogButtonyes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String textone = editetextsubject.getText().toString().trim();
+                    String texttwo = editextcompasemail.getText().toString().trim();
+
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto", "news@rdmns.lk", null));
+                    intent.putExtra(Intent.EXTRA_SUBJECT, textone);
+                    intent.putExtra(Intent.EXTRA_TEXT, texttwo);
+                    startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+
+
+                }
+            });
+
+            dilogButtonNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+
+
+                }
+            });
+
+            dialog.show();
         }
         else if (LostItemposition==3){
 

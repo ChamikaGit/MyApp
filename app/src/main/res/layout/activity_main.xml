@@ -88,10 +88,28 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:id="@+id/btncontactnumbers"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/imgbuttoncontacnumbers"
+                />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:id="@+id/btnrailwaysecurity"
                 android:adjustViewBounds="true"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/imgbuttonsecurity"
+                />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/btncomplaints"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/imgbuttoncomplaints"
                 />
 
 

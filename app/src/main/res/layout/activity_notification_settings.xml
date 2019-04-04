@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/toolbar_notification_settings"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp">
 
 
         <LinearLayout
@@ -190,7 +190,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="puttalam Line"
+                            android:text="Puttalam Line"
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
 
@@ -436,7 +436,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Other Line"
+                            android:text="Other Lines"
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
 

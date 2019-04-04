@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private VideoView mvideoView;
-    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus,mImgbtnlostandfound,mImgbtnrailwaysecurity;
+    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus, mImgbtnlostandfound, mImgbtnrailwaysecurity, mImgbtncontactnumbers, mImgbtncomplain;
     View sbView;
     boolean misConnected;
     private Sharedprefernce sharedprefernce;
@@ -116,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnaboutus = findViewById(R.id.btnaboutus);
         mImgbtnlostandfound = findViewById(R.id.btnlostandfound);
         mImgbtnrailwaysecurity = findViewById(R.id.btnrailwaysecurity);
+        mImgbtncontactnumbers = findViewById(R.id.btncontactnumbers);
+        mImgbtncomplain = findViewById(R.id.btncomplaints);
 
         mImgbtnnewsfeed.setOnClickListener(this);
         mImgbtnNotification.setOnClickListener(this);
@@ -124,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnaboutus.setOnClickListener(this);
         mImgbtnlostandfound.setOnClickListener(this);
         mImgbtnrailwaysecurity.setOnClickListener(this);
+        mImgbtncontactnumbers.setOnClickListener(this);
+        mImgbtncomplain.setOnClickListener(this);
 
 
 //        OneSignal.setSubscription(true);
@@ -270,7 +274,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
+            case R.id.btncontactnumbers:
 
+                if (isOnline()) {
+                    Intent intentContactNumber = new Intent(MainActivity.this, ContactNumberActvity.class);
+                    startActivity(intentContactNumber);
+                } else {
+                    snakbar();
+                }
+                break;
+
+            case R.id.btncomplaints:
+                String url = "https://www.rdmns.lk/complaint";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+                break;
         }
     }
 
@@ -310,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"+"+94112336614"));
+                intent.setData(Uri.parse("tel:" + "+94112336614"));
                 startActivity(intent);
             }
         });
@@ -466,7 +485,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 notificationtext.setText(title);
                 if (Imageurl != null) {
                     Picasso.with(MainActivity.this).load(Imageurl).placeholder(R.drawable.icon).into(imageViewnotiimage);
-                }else {
+                } else {
 
                     imageViewnotiimage.setVisibility(View.GONE);
                 }
@@ -496,7 +515,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
 //    class NotificationOpenHandler implements OneSignal.NotificationOpenedHandler {
 //        // This fires when a notification is opened by tapping on it.
 //        @Override
@@ -518,7 +536,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            startActivity(intent);
 //        }
 //    }
-
 
 
 }
