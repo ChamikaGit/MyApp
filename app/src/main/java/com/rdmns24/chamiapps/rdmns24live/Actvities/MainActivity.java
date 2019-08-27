@@ -108,6 +108,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
 
+
+
         mvideoView = findViewById(R.id.id_mainimg);
         mImgbtnnewsfeed = findViewById(R.id.btnNewsfeed);
         mImgbtntimetable = findViewById(R.id.btnTimetable);
@@ -387,6 +389,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
 
+        if(id == R.id.action_privacypolicy){
+
+            if (isOnline()){
+                String url = "http://rdmns.lk/privacy_policy_rdmns.html";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }else {
+
+                snakbar();
+            }
+
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -463,52 +480,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (result != null) {
 
-                String title = result.notification.payload.title;
-                String description = result.notification.payload.body;
-                String Imageurl = result.notification.payload.bigPicture;
-
-
-                dialog = new Dialog(MainActivity.this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_custom_notification);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.setCancelable(false);
-                TextView textView = dialog.findViewById(R.id.etNote);
-                TextView notificationtext = dialog.findViewById(R.id.idnotificationtext);
-                ImageView imageViewclose = dialog.findViewById(R.id.btnclose);
-                ImageView imageViewnotiimage = dialog.findViewById(R.id.notificationimg);
-                Button button = dialog.findViewById(R.id.btndilogyes);
-
-                imageViewnotiimage.setVisibility(View.VISIBLE);
-
-                textView.setText(description);
-                notificationtext.setText(title);
-                if (Imageurl != null) {
-                    Picasso.with(MainActivity.this).load(Imageurl).placeholder(R.drawable.icon).into(imageViewnotiimage);
-                } else {
-
-                    imageViewnotiimage.setVisibility(View.GONE);
-                }
-
-
-                imageViewclose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
-                        startActivity(intent);
-                    }
-                });
-
-
-                dialog.show();
+//                String title = result.notification.payload.title;
+//                String description = result.notification.payload.body;
+//                String Imageurl = result.notification.payload.bigPicture;
+//
+//
+//                dialog = new Dialog(MainActivity.this);
+//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialog.setContentView(R.layout.dialog_custom_notification);
+//                dialog.setCanceledOnTouchOutside(false);
+//                dialog.setCancelable(false);
+//                TextView textView = dialog.findViewById(R.id.etNote);
+//                TextView notificationtext = dialog.findViewById(R.id.idnotificationtext);
+//                ImageView imageViewclose = dialog.findViewById(R.id.btnclose);
+//                ImageView imageViewnotiimage = dialog.findViewById(R.id.notificationimg);
+//                Button button = dialog.findViewById(R.id.btndilogyes);
+//
+//                imageViewnotiimage.setVisibility(View.VISIBLE);
+//
+//                textView.setText(description);
+//                notificationtext.setText(title);
+//                if (Imageurl != null) {
+//                    Picasso.with(MainActivity.this).load(Imageurl).placeholder(R.drawable.icon).into(imageViewnotiimage);
+//                } else {
+//
+//                    imageViewnotiimage.setVisibility(View.GONE);
+//                }
+//
+//
+//                imageViewclose.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                button.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//                        Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+//                        startActivity(intent);
+//                    }
+//                });
+//
+//
+//                dialog.show();
 
             }
         }
@@ -536,6 +553,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            startActivity(intent);
 //        }
 //    }
+
+
 
 
 }

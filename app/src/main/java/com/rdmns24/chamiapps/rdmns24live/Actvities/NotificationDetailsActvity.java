@@ -102,8 +102,9 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
         imageViewarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NotificationDetailsActvity.this, NotificationActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(NotificationDetailsActvity.this, NotificationActivity.class);
+//                startActivity(intent);
+                finish();
                 overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
             }
         });

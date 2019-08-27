@@ -14,10 +14,20 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.onesignal.OneSignal;
+import com.rdmns24.chamiapps.rdmns24live.Models.NotificationPost;
+import com.rdmns24.chamiapps.rdmns24live.Models.Notificationstatus;
+import com.rdmns24.chamiapps.rdmns24live.Models.TrainLines;
 import com.rdmns24.chamiapps.rdmns24live.R;
+import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnspushnotificationsync;
+import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Postrdmnspushnotificationsync;
 import com.rdmns24.chamiapps.rdmns24live.Sharedprefernces.Sharedprefernce;
 
-public class NotificationSettingsActivity extends AppCompatActivity implements View.OnClickListener {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
+public class NotificationSettingsActivity extends AppCompatActivity implements View.OnClickListener,Getrdmnspushnotificationsync.getPushNotificationcallback,Postrdmnspushnotificationsync.getPostPushNotificationcallback {
 
 
     private TextView toobarname, tv1, tv2, tv3, tv4, tv5;
@@ -26,6 +36,14 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     private Sharedprefernce sharedprefernce;
     private String ssw1,ssw2,ssw3,ssw4,ssw5;
     private AdView adView;
+    private String oneSignalPlayerId;
+    private Getrdmnspushnotificationsync getrdmnspushnotificationsync;
+    private Postrdmnspushnotificationsync postrdmnspushnotificationsync;
+    private List<TrainLines.DataBean> dataBeans;
+    private TextView tvSubmit;
+    private JSONObject tags;
+    private JSONObject Posttags;
+    private String line1="1",line2="1",line3="1",line4="1",line5="1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +58,12 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         tv3 = findViewById(R.id.tv3);
         tv4 = findViewById(R.id.tv4);
         tv5 = findViewById(R.id.tv5);
+        tvSubmit = findViewById(R.id.tvSubmit);
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+//        adView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
 
         switch1 = findViewById(R.id.switch1);
         switch2 = findViewById(R.id.switch2);
@@ -52,13 +71,13 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         switch4 = findViewById(R.id.switch4);
         switch5 = findViewById(R.id.switch5);
 
-        sharedprefernce = new Sharedprefernce();
-
-        ssw1 =sharedprefernce.getSwitch1(getApplicationContext());
-        ssw2 =sharedprefernce.getSwitch2(getApplicationContext());
-        ssw3 =sharedprefernce.getSwitch3(getApplicationContext());
-        ssw4 =sharedprefernce.getSwitch4(getApplicationContext());
-        ssw5 =sharedprefernce.getSwitch5(getApplicationContext());
+//        sharedprefernce = new Sharedprefernce();
+//
+//        ssw1 =sharedprefernce.getSwitch1(getApplicationContext());
+//        ssw2 =sharedprefernce.getSwitch2(getApplicationContext());
+//        ssw3 =sharedprefernce.getSwitch3(getApplicationContext());
+//        ssw4 =sharedprefernce.getSwitch4(getApplicationContext());
+//        ssw5 =sharedprefernce.getSwitch5(getApplicationContext());
 
 
         tv1.setSelected(true);
@@ -67,6 +86,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         tv4.setSelected(true);
         tv5.setSelected(true);
         imgBackbtn.setOnClickListener(this);
+        tvSubmit.setOnClickListener(this);
 
         OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
             @Override
@@ -74,6 +94,11 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
                 Log.d("debug", "User:" + userId);
 //                if (registrationId != null)
 //                    Log.d("debug", "registrationId:" + registrationId);
+                if (userId!=null){
+                    oneSignalPlayerId = userId;
+                }else {
+                    oneSignalPlayerId ="";
+                }
 
             }
         });
@@ -85,14 +110,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (b) {
-                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch1(getApplicationContext(),"1");
-                    OneSignal.sendTag("key1","yes");
+                    line1 ="1";
                 } else {
-
-                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch1(getApplicationContext(),null);
-                    OneSignal.sendTag("key1","no");
+                    line1 ="0";
                 }
 
             }
@@ -102,12 +122,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (b) {
-                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch2(getApplicationContext(),"2");
+                    line2 ="1";
                 } else {
-
-                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch2(getApplicationContext(),null);
+                    line2 ="0";
                 }
             }
         });
@@ -115,12 +132,10 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch3(getApplicationContext(),"3");
-                } else {
+                    line3="1";
 
-                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch3(getApplicationContext(),null);
+                } else {
+                    line3 ="0";
                 }
             }
         });
@@ -129,12 +144,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (b) {
-                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch4(getApplicationContext(),"4");
+                    line4 ="1";
                 } else {
-
-                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch4(getApplicationContext(),null);
+                    line4 ="0";
                 }
             }
         });
@@ -142,11 +154,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch5(getApplicationContext(),"5");
+                    line5 ="1";
                 } else {
-                    Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-                    sharedprefernce.notificationSwitch5(getApplicationContext(),null);
+                    line5 ="0";
                 }
             }
         });
@@ -155,31 +165,35 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     }
 
     private void checkNotification() {
-        if (sharedprefernce.getSwitch1(getApplicationContext())==null){
-            switch1.setChecked(false);
-        }else {
-            switch1.setChecked(true);
-        }
-        if (sharedprefernce.getSwitch2(getApplicationContext())==null){
-            switch2.setChecked(false);
-        }else {
-            switch2.setChecked(true);
-        }
-        if (sharedprefernce.getSwitch3(getApplicationContext())==null){
-            switch3.setChecked(false);
-        }else {
-            switch3.setChecked(true);
-        }
-        if (sharedprefernce.getSwitch4(getApplicationContext())==null){
-            switch4.setChecked(false);
-        }else {
-            switch4.setChecked(true);
-        }
-        if (sharedprefernce.getSwitch5(getApplicationContext())==null){
-            switch5.setChecked(false);
-        }else {
-            switch5.setChecked(true);
-        }
+
+        getrdmnspushnotificationsync = new Getrdmnspushnotificationsync(getApplicationContext(),dataBeans,oneSignalPlayerId,this);
+        getrdmnspushnotificationsync.GetPushNotificationRetrofit();
+
+//        if (sharedprefernce.getSwitch1(getApplicationContext())==null){
+//            switch1.setChecked(false);
+//        }else {
+//            switch1.setChecked(true);
+//        }
+//        if (sharedprefernce.getSwitch2(getApplicationContext())==null){
+//            switch2.setChecked(false);
+//        }else {
+//            switch2.setChecked(true);
+//        }
+//        if (sharedprefernce.getSwitch3(getApplicationContext())==null){
+//            switch3.setChecked(false);
+//        }else {
+//            switch3.setChecked(true);
+//        }
+//        if (sharedprefernce.getSwitch4(getApplicationContext())==null){
+//            switch4.setChecked(false);
+//        }else {
+//            switch4.setChecked(true);
+//        }
+//        if (sharedprefernce.getSwitch5(getApplicationContext())==null){
+//            switch5.setChecked(false);
+//        }else {
+//            switch5.setChecked(true);
+//        }
 
     }
 
@@ -196,7 +210,89 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             case R.id.idbackarrow:
                 finish();
                 break;
+
+            case R.id.tvSubmit:
+                sendTags();
+                break;
         }
+    }
+
+    private void sendTags() {
+       tags = new JSONObject();
+        try {
+            tags.put("one_line", line1);
+            tags.put("two_line", line2);
+            tags.put("three_line", line3);
+            tags.put("four_line", line4);
+            tags.put("five_line", line5);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        OneSignal.sendTags(tags);
+
+        Posttags =  new JSONObject();
+        try {
+            Posttags.put("player_id",oneSignalPlayerId);
+            Posttags.put("one_line", line1);
+            Posttags.put("two_line", line2);
+            Posttags.put("three_line", line3);
+            Posttags.put("four_line", line4);
+            Posttags.put("five_line", line5);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        postrdmnspushnotificationsync = new Postrdmnspushnotificationsync(getApplicationContext(),Posttags,this);
+        postrdmnspushnotificationsync.PostPushNotificationRetrofit();
+
+
+    }
+
+    @Override
+    public void onPushNotification(boolean status, Notificationstatus response) {
+
+        if (response!=null){
+            String line_one = response.getOneLine();
+            String line_two = response.getTwoLine();
+            String line_three = response.getThreeLine();
+            String line_four = response.getFourLine();
+            String line_five = response.getFiveLine();
+
+            if (line_one.equals("1")) {
+                switch1.setChecked(true);
+            }else {
+                switch1.setChecked(false);
+            }
+            if (line_two.equals("1")) {
+                switch2.setChecked(true);
+            }else {
+                switch2.setChecked(false);
+            }
+            if (line_three.equals("1")) {
+                switch3.setChecked(true);
+            }else {
+                switch3.setChecked(false);
+            }
+            if (line_four.equals("1")) {
+                switch4.setChecked(true);
+            }else {
+                switch4.setChecked(false);
+            }
+            if (line_five.equals("1")) {
+                switch5.setChecked(true);
+            }else {
+                switch5.setChecked(false);
+            }
+        }else {
+            sendTags();
+        }
+
+
+    }
+
+    @Override
+    public void onPostPushNotification(boolean status, NotificationPost response) {
+
     }
 
 //    JSONObject tags = new JSONObject();

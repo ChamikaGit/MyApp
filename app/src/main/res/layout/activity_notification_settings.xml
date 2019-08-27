@@ -66,6 +66,7 @@
 
 
             <LinearLayout
+                android:id="@+id/switch_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -479,6 +480,21 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvSubmit"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:textColor="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="25dp"
+                android:text="SUBMIT"
+                android:gravity="center"
+                android:layout_below="@+id/switch_container"
+                android:background="@drawable/rounded_button_transparent"
+                />
         </RelativeLayout>
 
     </ScrollView>

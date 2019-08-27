@@ -88,7 +88,7 @@
                         android:lineSpacingExtra="2dp"
                         android:gravity="center"
                         android:textStyle="bold"
-                        android:textColor="@android:color/white"
+                        android:textColor="#ec2929"
                         android:id="@+id/etNote" />
 
                     <TextView

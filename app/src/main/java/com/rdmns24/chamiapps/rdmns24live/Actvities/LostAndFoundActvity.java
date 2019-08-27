@@ -29,6 +29,7 @@ import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnslostfoundsync;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewsrecentsync;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewssync;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     private LoastandfoundAdapter loastandfoundAdapter;
     private ArrayList<LostfoundItem> lostfoundItemArrayList;
     private ProgressBar pbLostFound;
-    private ImageView idbackarrow,idthreedots;
+    private ImageView idbackarrow,idthreedots,imgheader;
     private AdView adView;
 
 
@@ -60,6 +61,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
         pbLostFound = findViewById(R.id.pbProgressbarNotification);
         idbackarrow = findViewById(R.id.idbackarrow);
         idthreedots = findViewById(R.id.idthreedots);
+        imgheader = findViewById(R.id.imgheader);
 
 
         pbLostFound.setVisibility(View.VISIBLE);
@@ -95,6 +97,8 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     private void updateUI() {
         idthreedots.setVisibility(View.GONE);
         toobarname.setText("Lost And Found");
+        String url ="http://rdmns.lk/adv_img/slider_1.png";
+        Picasso.with(this).load(url).into(imgheader);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recylerview_lostfound.setLayoutManager(layoutManager);
         loastandfoundAdapter = new LoastandfoundAdapter(getApplicationContext(), lostfoundItemArrayList, this);

@@ -125,8 +125,8 @@ public class NewsfeeddetailsActvity extends AppCompatActivity {
         imageViewbackarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewsfeeddetailsActvity.this, NewsfeedActvity.class);
-                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
             }
         });
 

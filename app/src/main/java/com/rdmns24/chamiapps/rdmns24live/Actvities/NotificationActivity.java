@@ -65,12 +65,13 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
         idbackarrow = findViewById(R.id.idbackarrow);
 
         progressBar.setVisibility(View.VISIBLE);
+        idbtnsettings.setVisibility(View.VISIBLE);
 
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
-        madView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+//        madView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
 
         idbtnsettings.setOnClickListener(this);
         idbackarrow.setOnClickListener(this);
@@ -147,6 +148,7 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
 
             case R.id.idbackarrow:
                 finish();
+                overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
                 break;
         }
     }
