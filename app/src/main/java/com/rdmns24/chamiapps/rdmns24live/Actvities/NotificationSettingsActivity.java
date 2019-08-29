@@ -68,10 +68,10 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         tv5 = findViewById(R.id.tv5);
         tvSubmit = findViewById(R.id.tvSubmit);
 
-//        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
-//        adView = findViewById(R.id.adView);
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        adView.loadAd(adRequest);
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         switch1 = findViewById(R.id.switch1);
         switch2 = findViewById(R.id.switch2);
