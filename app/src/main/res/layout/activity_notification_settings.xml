@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bggradient"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#201f25"
     tools:context=".Actvities.NotificationSettingsActivity">
 
     <include
@@ -30,9 +31,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:maxLines="1"
+                android:fontFamily="@font/fm_malithi"
+                app:fontFamily="@font/fm_malithi"
                 android:text="ඔබට තොරතුරු අවශ්‍ය වන දුම්රිය මාර්ග තෝරන්න"
-                android:textColor="#7397cd"
-                android:textSize="14sp" />
+                android:textColor="#75cbe9"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -40,7 +43,7 @@
                 android:gravity="left"
                 android:maxLines="1"
                 android:text="Please select the train lines which you want to get daily updates."
-                android:textColor="#7397cd"
+                android:textColor="#75cbe9"
                 android:textSize="12sp"
                 android:textStyle="normal" />
 
@@ -103,25 +106,27 @@
                             android:layout_height="wrap_content"
                             android:text="ප්‍රධාන මාර්ගය"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:text="Main Line"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv1"
                             android:layout_width="240dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:singleLine="true"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:text="කොළඹ කොටුව සිට බදුල්ල දක්වා"
                             android:textColor="@android:color/white"
@@ -183,26 +188,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="පුත්තලම මාර්ගය"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:text="Puttalam Line"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv2"
                             android:layout_width="240dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:singleLine="true"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:text="කොළඹ කොටුව සිට පුත්තලම සහ නූර්නගර් දක්වා"
                             android:textColor="@android:color/white"
@@ -265,26 +272,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="මුහුදුබඩ මාර්ගය"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:text="Coastal Line"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv3"
                             android:layout_width="240dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:singleLine="true"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:text="කොළඹ කොටුව සිට ගාල්ල/මාතර සහ බෙලිඅත්ත දක්වා"
                             android:textColor="@android:color/white"
@@ -347,26 +356,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="කැලණිවැලි මාර්ගය"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:text="Kelani Valley Line"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv4"
                             android:layout_width="240dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:singleLine="true"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:text="කොළඹ කොටුව සිට අවිස්සාවේල්ල දක්වා"
                             android:textColor="@android:color/white"
@@ -429,26 +440,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="අනෙකුත් මාර්ගයන්"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:text="Other Lines"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv5"
                             android:layout_width="240dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:singleLine="true"
                             android:ellipsize="marquee"
                             android:fadingEdge="horizontal"
+                            android:fontFamily="@font/fm_malithi"
+                            app:fontFamily="@font/fm_malithi"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:text="කොළඹ කොටුව සිට මාතලේ / මඩකලපුව / ත්‍රිකුණාමලය / තලෙයිමන්නාරම් තොට සහ කන්කසන්තුරය දක්වා"
                             android:textColor="@android:color/white"
@@ -490,7 +503,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="25dp"
-                android:text="SUBMIT"
+                android:text="Save"
+                android:textSize="14sp"
                 android:gravity="center"
                 android:layout_below="@+id/switch_container"
                 android:background="@drawable/rounded_button_transparent"

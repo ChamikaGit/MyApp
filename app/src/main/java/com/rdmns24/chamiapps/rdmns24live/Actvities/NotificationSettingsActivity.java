@@ -1,10 +1,17 @@
 package com.rdmns24.chamiapps.rdmns24live.Actvities;
 
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,14 +34,14 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class NotificationSettingsActivity extends AppCompatActivity implements View.OnClickListener,Getrdmnspushnotificationsync.getPushNotificationcallback,Postrdmnspushnotificationsync.getPostPushNotificationcallback {
+public class NotificationSettingsActivity extends AppCompatActivity implements View.OnClickListener, Getrdmnspushnotificationsync.getPushNotificationcallback, Postrdmnspushnotificationsync.getPostPushNotificationcallback {
 
 
     private TextView toobarname, tv1, tv2, tv3, tv4, tv5;
     private ImageView imgBackbtn;
     private SwitchCompat switch1, switch2, switch3, switch4, switch5;
     private Sharedprefernce sharedprefernce;
-    private String ssw1,ssw2,ssw3,ssw4,ssw5;
+    private String ssw1, ssw2, ssw3, ssw4, ssw5;
     private AdView adView;
     private String oneSignalPlayerId;
     private Getrdmnspushnotificationsync getrdmnspushnotificationsync;
@@ -43,7 +50,8 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     private TextView tvSubmit;
     private JSONObject tags;
     private JSONObject Posttags;
-    private String line1="1",line2="1",line3="1",line4="1",line5="1";
+    private String line1 = "1", line2 = "1", line3 = "1", line4 = "1", line5 = "1";
+    static android.support.v7.app.AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +102,10 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
                 Log.d("debug", "User:" + userId);
 //                if (registrationId != null)
 //                    Log.d("debug", "registrationId:" + registrationId);
-                if (userId!=null){
+                if (userId != null) {
                     oneSignalPlayerId = userId;
-                }else {
-                    oneSignalPlayerId ="";
+                } else {
+                    oneSignalPlayerId = "";
                 }
 
             }
@@ -110,9 +118,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (b) {
-                    line1 ="1";
+                    line1 = "1";
                 } else {
-                    line1 ="0";
+                    line1 = "0";
                 }
 
             }
@@ -122,9 +130,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (b) {
-                    line2 ="1";
+                    line2 = "1";
                 } else {
-                    line2 ="0";
+                    line2 = "0";
                 }
             }
         });
@@ -132,10 +140,10 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    line3="1";
+                    line3 = "1";
 
                 } else {
-                    line3 ="0";
+                    line3 = "0";
                 }
             }
         });
@@ -144,9 +152,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (b) {
-                    line4 ="1";
+                    line4 = "1";
                 } else {
-                    line4 ="0";
+                    line4 = "0";
                 }
             }
         });
@@ -154,9 +162,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    line5 ="1";
+                    line5 = "1";
                 } else {
-                    line5 ="0";
+                    line5 = "0";
                 }
             }
         });
@@ -166,7 +174,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
 
     private void checkNotification() {
 
-        getrdmnspushnotificationsync = new Getrdmnspushnotificationsync(getApplicationContext(),dataBeans,oneSignalPlayerId,this);
+        getrdmnspushnotificationsync = new Getrdmnspushnotificationsync(getApplicationContext(), dataBeans, oneSignalPlayerId, this);
         getrdmnspushnotificationsync.GetPushNotificationRetrofit();
 
 //        if (sharedprefernce.getSwitch1(getApplicationContext())==null){
@@ -218,7 +226,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     }
 
     private void sendTags() {
-       tags = new JSONObject();
+        tags = new JSONObject();
         try {
             tags.put("one_line", line1);
             tags.put("two_line", line2);
@@ -230,9 +238,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         }
         OneSignal.sendTags(tags);
 
-        Posttags =  new JSONObject();
+        Posttags = new JSONObject();
         try {
-            Posttags.put("player_id",oneSignalPlayerId);
+            Posttags.put("player_id", oneSignalPlayerId);
             Posttags.put("one_line", line1);
             Posttags.put("two_line", line2);
             Posttags.put("three_line", line3);
@@ -242,7 +250,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             e.printStackTrace();
         }
 
-        postrdmnspushnotificationsync = new Postrdmnspushnotificationsync(getApplicationContext(),Posttags,this);
+        postrdmnspushnotificationsync = new Postrdmnspushnotificationsync(getApplicationContext(), Posttags, this);
         postrdmnspushnotificationsync.PostPushNotificationRetrofit();
 
 
@@ -251,7 +259,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     @Override
     public void onPushNotification(boolean status, Notificationstatus response) {
 
-        if (response!=null){
+        if (response != null) {
             String line_one = response.getOneLine();
             String line_two = response.getTwoLine();
             String line_three = response.getThreeLine();
@@ -260,30 +268,40 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
 
             if (line_one.equals("1")) {
                 switch1.setChecked(true);
-            }else {
+                line1 = "1";
+            } else {
                 switch1.setChecked(false);
+                line1 = "0";
             }
             if (line_two.equals("1")) {
                 switch2.setChecked(true);
-            }else {
+                line2 = "1";
+            } else {
                 switch2.setChecked(false);
+                line2 = "0";
             }
             if (line_three.equals("1")) {
                 switch3.setChecked(true);
-            }else {
+                line3 = "1";
+            } else {
                 switch3.setChecked(false);
+                line3 = "0";
             }
             if (line_four.equals("1")) {
                 switch4.setChecked(true);
-            }else {
+                line4 = "1";
+            } else {
                 switch4.setChecked(false);
+                line4 = "0";
             }
             if (line_five.equals("1")) {
                 switch5.setChecked(true);
-            }else {
+                line5 = "1";
+            } else {
                 switch5.setChecked(false);
+                line5 = "0";
             }
-        }else {
+        } else {
             sendTags();
         }
 
@@ -293,6 +311,66 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     @Override
     public void onPostPushNotification(boolean status, NotificationPost response) {
 
+        if (response.getMessage().equals("success_update")){
+            showAlert(this,"");
+        }
+
+    }
+
+
+    public void showAlert(Context context, String message) {
+        if (context == null) {
+            return;
+        }
+        try {
+            android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(new ContextThemeWrapper(context, android.R.style.Theme_DeviceDefault_Light_Dialog));
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View alertView = inflater.inflate(R.layout.dilaog_sucess, null);
+            alertDialogBuilder.setView(alertView);
+            alertDialogBuilder.setCancelable(false);
+            dismiss();
+            alertDialog = alertDialogBuilder.create();
+            alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
+            lp.dimAmount = 0.5f;
+            alertDialog.getWindow().setAttributes(lp);
+            //TextView textViewTitle = alertView.findViewById(R.id.textViewTitle);
+//            TextView textViewMessage = alertView.findViewById(R.id.textViewMessage);
+//            textViewMessage.setText(message);
+            TextView btnOk = alertView.findViewById(R.id.tvOK);
+            ImageView imgClose = alertView.findViewById(R.id.btnclose);
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    NotificationSettingsActivity.this.finish();
+                }
+            });
+            btnOk.setVisibility(View.VISIBLE);
+            imgClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                }
+            });
+
+            alertDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            alertDialog.setCanceledOnTouchOutside(false);
+            alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            alertDialog.show();
+        } catch (Exception e) {
+        }
+    }
+
+    public static void dismiss() {
+        try {
+            if (alertDialog != null) {
+                alertDialog.dismiss();
+            }
+        } catch (Exception e) {
+        }
     }
 
 //    JSONObject tags = new JSONObject();
