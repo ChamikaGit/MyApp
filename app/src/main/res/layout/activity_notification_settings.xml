@@ -145,7 +145,7 @@
                         android:layout_toLeftOf="@+id/switch1"
                         android:background="@color/transparent_text_view" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
                         android:layout_toLeftOf="@+id/switch2"
                         android:background="@color/transparent_text_view" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                         android:layout_toLeftOf="@+id/switch3"
                         android:background="@color/transparent_text_view" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -396,7 +396,7 @@
                         android:layout_toLeftOf="@+id/switch4"
                         android:background="@color/transparent_text_view" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -480,7 +480,7 @@
                         android:layout_toLeftOf="@+id/switch5"
                         android:background="@color/transparent_text_view" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
