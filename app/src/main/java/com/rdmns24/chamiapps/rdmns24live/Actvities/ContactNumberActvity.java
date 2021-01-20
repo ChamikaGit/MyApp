@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -13,6 +12,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -39,7 +40,7 @@ public class ContactNumberActvity extends AppCompatActivity {
 
         mContext = getApplicationContext();
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+        MobileAds.initialize(getApplicationContext());
         madView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);

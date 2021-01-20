@@ -13,8 +13,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,10 +28,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.onesignal.OSNotification;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
-import com.rdmns24.chamiapps.rdmns24live.Manifest;
 import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Sharedprefernces.Sharedprefernce;
 import com.squareup.picasso.Picasso;
@@ -348,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Snackbar snackbar = Snackbar.make(findViewById(R.id.fabb), message, Snackbar.LENGTH_LONG);
         View sbView = snackbar.getView();
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = (TextView) sbView.findViewById(R.id.snackbar_text);
         textView.setTextColor(color);
         snackbar.show();
 

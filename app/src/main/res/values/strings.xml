@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_newsfeeddetails_actvity">News Content</string>
     <string name="title_activity_time_table">TimeTableActivity</string>
+    <string name="admob_app_id">ca-app-pub-8434077743160830~2037142306</string>
 
 
     //ratestrings

@@ -2,9 +2,7 @@ package com.rdmns24.chamiapps.rdmns24live.Actvities;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -16,6 +14,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -51,7 +53,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     private JSONObject tags;
     private JSONObject Posttags;
     private String line1 = "1", line2 = "1", line3 = "1", line4 = "1", line5 = "1";
-    static android.support.v7.app.AlertDialog alertDialog;
+    static AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         tv5 = findViewById(R.id.tv5);
         tvSubmit = findViewById(R.id.tvSubmit);
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+        MobileAds.initialize(getApplicationContext());
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
@@ -323,7 +325,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             return;
         }
         try {
-            android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(new ContextThemeWrapper(context, android.R.style.Theme_DeviceDefault_Light_Dialog));
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context, android.R.style.Theme_DeviceDefault_Light_Dialog));
             LayoutInflater inflater = LayoutInflater.from(context);
             View alertView = inflater.inflate(R.layout.dilaog_sucess, null);
             alertDialogBuilder.setView(alertView);

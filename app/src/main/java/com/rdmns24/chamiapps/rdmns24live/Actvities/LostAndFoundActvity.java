@@ -3,10 +3,7 @@ package com.rdmns24.chamiapps.rdmns24live.Actvities;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -68,7 +69,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+        MobileAds.initialize(getApplicationContext());
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);

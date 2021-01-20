@@ -1,7 +1,7 @@
 package com.rdmns24.chamiapps.rdmns24live.Actvities;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rdmns24.chamiapps.rdmns24live.R;
 

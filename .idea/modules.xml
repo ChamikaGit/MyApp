@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyApp.iml" filepath="$PROJECT_DIR$/MyApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyApp-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyApp-app.iml" group="MyApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RDMNS Mediation-MyApp.iml" filepath="$PROJECT_DIR$/.idea/modules/RDMNS Mediation-MyApp.iml" group="MyApp" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

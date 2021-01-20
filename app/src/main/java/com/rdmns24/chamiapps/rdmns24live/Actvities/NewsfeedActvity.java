@@ -8,12 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
@@ -27,6 +22,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.marlonlom.utilities.timeago.TimeAgo;
 import com.google.android.gms.ads.AdRequest;
@@ -95,7 +95,7 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
 
 
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-8434077743160830~2037142306");
+        MobileAds.initialize(getApplicationContext());
         madView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);

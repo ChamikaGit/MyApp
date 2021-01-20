@@ -3,9 +3,6 @@ package com.rdmns24.chamiapps.rdmns24live.Actvities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,11 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rdmns24.chamiapps.rdmns24live.Helpers.Consts;
 import com.rdmns24.chamiapps.rdmns24live.R;
 import com.squareup.picasso.Picasso;
@@ -65,7 +65,7 @@ public class NewsfeeddetailsActvity extends AppCompatActivity {
 //        minterstitialAd = new InterstitialAd(this);
 //        minterstitialAd.setAdUnitId("ca-app-pub-8434077743160830/7053187305");
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-8434077743160830~2037142306");
+        MobileAds.initialize(getApplicationContext());
         madView = findViewById(R.id.adView);
         final AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);

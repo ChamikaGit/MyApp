@@ -1,13 +1,14 @@
 package com.rdmns24.chamiapps.rdmns24live.Holders;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.rdmns24.chamiapps.rdmns24live.R;
 

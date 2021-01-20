@@ -57,14 +57,14 @@
         android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleRecent_news"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:layout_marginTop="1dp">
 
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
         android:id="@+id/horizanleLine12"
@@ -109,13 +109,13 @@
         android:layout_marginTop="5dp"
         android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleAll_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4dp">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>
