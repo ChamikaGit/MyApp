@@ -9,13 +9,13 @@
     tools:context="com.rdmns24.chamiapps.rdmns24live.Actvities.IntroActvity">
 
 
-    <androidx.core.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/sliderviewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/dotslayout">
 
-    </androidx.core.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
     <LinearLayout
         android:id="@+id/dotslayout"

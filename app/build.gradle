@@ -31,8 +31,18 @@ android {
         versionCode 11
         versionName "2.0.11"
         multiDexEnabled true
+        project.ext.set("archivesBaseName", "rdmns-v" + defaultConfig.versionName + "_" + defaultConfig.versionCode + "-" + new Date().format('yyyyMMdd'))
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
