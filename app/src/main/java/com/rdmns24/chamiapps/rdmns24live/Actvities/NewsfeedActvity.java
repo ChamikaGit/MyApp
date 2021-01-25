@@ -32,6 +32,8 @@ import com.github.marlonlom.utilities.timeago.TimeAgo;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.rdmns24.chamiapps.rdmns24live.Holders.NewsfeedAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Holders.NewsfeedAdapter_horizontall;
 import com.rdmns24.chamiapps.rdmns24live.Models.Newsfeed;
@@ -95,7 +97,12 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
 
 
 
-        MobileAds.initialize(getApplicationContext());
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
         madView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);

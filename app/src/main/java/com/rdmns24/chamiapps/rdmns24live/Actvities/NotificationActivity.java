@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.rdmns24.chamiapps.rdmns24live.Holders.TraineLineAdpter;
 import com.rdmns24.chamiapps.rdmns24live.Models.TrainLines;
 import com.rdmns24.chamiapps.rdmns24live.R;
@@ -69,7 +71,12 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
         idbtnsettings.setVisibility(View.VISIBLE);
 
 
-        MobileAds.initialize(getApplicationContext());
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
         madView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);

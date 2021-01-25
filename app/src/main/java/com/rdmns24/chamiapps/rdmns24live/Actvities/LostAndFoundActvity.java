@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.rdmns24.chamiapps.rdmns24live.Holders.LoastandfoundAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Holders.NewsfeedAdapter_horizontall;
 import com.rdmns24.chamiapps.rdmns24live.Models.Lostfound;
@@ -69,7 +71,12 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MobileAds.initialize(getApplicationContext());
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);

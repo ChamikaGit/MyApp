@@ -30,6 +30,11 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.ads.AudienceNetworkAds;
+import com.google.android.ads.mediationtestsuite.MediationTestSuite;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.onesignal.OSNotification;
 import com.onesignal.OSNotificationOpenResult;
@@ -66,23 +71,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
 
-
+            }
+        });
+        AudienceNetworkAds.initialize(this);
         context = getApplicationContext();
-
         AppRate.with(this)
                 .setInstallDays(1)
                 .setLaunchTimes(3)
                 .setRemindInterval(2)
                 .monitor();
-
         AppRate.showRateDialogIfMeetsConditions(this);
-
         sharedprefernce = new Sharedprefernce();
         shredval = sharedprefernce.getval(getApplicationContext());
         shredvaldialog = sharedprefernce.getvaldialog(getApplicationContext());
-
-
 //
 //        //chage statusbar iconcolors
 //        if (android.os.Build.VERSION.SDK_INT >= 21) {
@@ -97,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //
 //        }
 
-
         // OneSignal Initialization
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
@@ -105,9 +109,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setNotificationOpenedHandler(new NotificationOpenHandler())
                 .init();
 
+//        MediationTestSuite.launch(MainActivity.this);
+
+
 
         //                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-
 
 
         mvideoView = findViewById(R.id.id_mainimg);
@@ -389,14 +395,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
 
-        if(id == R.id.action_privacypolicy){
+        if (id == R.id.action_privacypolicy) {
 
-            if (isOnline()){
+            if (isOnline()) {
                 String url = "http://rdmns.lk/privacy_policy_rdmns.html";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
-            }else {
+            } else {
 
                 snakbar();
             }
@@ -553,8 +559,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            startActivity(intent);
 //        }
 //    }
-
-
 
 
 }
