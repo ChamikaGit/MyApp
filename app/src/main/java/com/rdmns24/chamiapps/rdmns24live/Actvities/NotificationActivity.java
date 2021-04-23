@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -15,12 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Holders.TraineLineAdpter;
 import com.rdmns24.chamiapps.rdmns24live.Models.TrainLines;
 import com.rdmns24.chamiapps.rdmns24live.R;
@@ -37,9 +33,10 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
     private List<TrainLines.DataBean> dataLine = new ArrayList<>();
     private RecyclerView recyclerViewtrain;
     private ProgressBar progressBar;
-    private AdView madView;
+//    private AdView madView;
     private RelativeLayout idbtnsettings;
     private ImageView idbackarrow;
+    private LinearLayout banner_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,17 +66,20 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
 
         progressBar.setVisibility(View.VISIBLE);
         idbtnsettings.setVisibility(View.VISIBLE);
+        banner_container = findViewById(R.id.banner_container);
+
+        AdsUtils.adsShow(this,banner_container);
 
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        madView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        madView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
 
         idbtnsettings.setOnClickListener(this);
         idbackarrow.setOnClickListener(this);
@@ -159,5 +159,11 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
                 overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 }

@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,11 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Holders.LoastandfoundAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Holders.NewsfeedAdapter_horizontall;
 import com.rdmns24.chamiapps.rdmns24live.Models.Lostfound;
@@ -43,6 +40,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     private TextView toobarname;
     private Getrdmnslostfoundsync getrdmnslostfoundsync;
     private List<Lostfound.Datum> dataBeansrecent = new ArrayList<>();
+    private LinearLayout banner_container;
     //private ArrayList<String> loastList =new ArrayList<>();
 
 
@@ -51,7 +49,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     private ArrayList<LostfoundItem> lostfoundItemArrayList;
     private ProgressBar pbLostFound;
     private ImageView idbackarrow,idthreedots,imgheader;
-    private AdView adView;
+//    private AdView adView;
 
 
     @Override
@@ -65,21 +63,23 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
         idbackarrow = findViewById(R.id.idbackarrow);
         idthreedots = findViewById(R.id.idthreedots);
         imgheader = findViewById(R.id.imgheader);
+        banner_container =  findViewById(R.id.banner_container);
 
 
         pbLostFound.setVisibility(View.VISIBLE);
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        adView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
+        AdsUtils.adsShow(this,banner_container);
         loadJSON();
 
         idbackarrow.setOnClickListener(new View.OnClickListener() {
@@ -225,5 +225,11 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
 
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 }

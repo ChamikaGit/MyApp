@@ -5,17 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Holders.LoastandfoundAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Holders.LostAndFoundDetailsAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Models.Lostfound;
@@ -33,8 +30,9 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
     List<Lostfound.Datum> fetchList = new ArrayList<>();
     List<Lostfound.Datum> fetchFoundList = new ArrayList<>();
     List<Lostfound.Datum> fetchLostList = new ArrayList<>();
-    private AdView adView;
+//    private AdView adView;
     private ImageView idbackarrow,idthreedots;
+    private LinearLayout banner_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +43,22 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
 
         idbackarrow = findViewById(R.id.idbackarrow);
         idthreedots = findViewById(R.id.idthreedots);
+        banner_container = findViewById(R.id.banner_container);
 
 
         getDataFromIntent();
         updateUI();
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        AdsUtils.adsShow(this,banner_container);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        adView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
 
         //fetchList=  getIntent().getExtras("LostItems");
 
@@ -134,5 +134,11 @@ public class LostAndFoundDetailsActvity extends AppCompatActivity implements Los
 
     @Override
     public void getposition(int NewsItemposition) {
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 }

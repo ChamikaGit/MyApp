@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,11 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Holders.TraineLineNotificationAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Models.TraineLinesNotifications;
 import com.rdmns24.chamiapps.rdmns24live.R;
@@ -52,7 +49,8 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
     private ImageView imageViewarrow;
 
     private String textdetails;
-    private AdView madView;
+    private LinearLayout banner_container;
+//    private AdView madView;
 //    private InterstitialAd minterstitialAd;
 
 
@@ -86,13 +84,14 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
         tvyear = findViewById(R.id.tvyear);
         textViewtoobarname = findViewById(R.id.toobarname);
         imageViewarrow = findViewById(R.id.idbackarrow);
-
+        banner_container = findViewById(R.id.banner_container);
+        AdsUtils.adsShow(this,banner_container);
 
         //minterstitialAd = new InterstitialAd(this);
         // MobileAds.initialize(getApplicationContext(), "ca-app-pub-8434077743160830~2037142306");
-        madView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+//        madView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
 
         Bundle bundle = getIntent().getExtras();
         String trainelineID = bundle.getString("traineid");
@@ -287,5 +286,11 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AdsUtils.adsDestroy();
     }
 }

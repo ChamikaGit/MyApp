@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,11 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.marlonlom.utilities.timeago.TimeAgo;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Holders.NewsfeedAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Holders.NewsfeedAdapter_horizontall;
 import com.rdmns24.chamiapps.rdmns24live.Models.Newsfeed;
@@ -66,7 +63,8 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
 
     Handler handler;
 
-    private AdView madView;
+    //    private AdView madView;
+    private LinearLayout banner_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,18 +92,18 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
         progressbarhori = (ProgressBar) findViewById(R.id.pbProgressbarhori);
         textViewshowall = findViewById(R.id.idshowall);
         imageViewthreedots = findViewById(R.id.idthreedots);
+        banner_container = findViewById(R.id.banner_container);
 
-
-
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        madView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+        AdsUtils.adsShow(this, banner_container);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        madView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
 
         progressBarvertcal.setVisibility(View.VISIBLE);
         progressbarhori.setVisibility(View.VISIBLE);
@@ -296,8 +294,6 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
     }
 
 
-
-
     @Override
     public void getposition(int NewsItemposition) {
 
@@ -307,14 +303,14 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
         String newsTitle = data.get(NewsItemposition).getPostTitle();
         String newsDescription = data.get(NewsItemposition).getPostDescription();
         String newsImageUrl = data.get(NewsItemposition).getPostImage();
-        String newsurl =data.get(NewsItemposition).getPostUrl();
+        String newsurl = data.get(NewsItemposition).getPostUrl();
 //        Toast.makeText(getApplicationContext(),newsDescription,Toast.LENGTH_LONG).show();
 
         Bundle bundle = new Bundle();
         bundle.putString("TitleText", newsTitle);
         bundle.putString("DescriptionText", newsDescription);
         bundle.putString("ImageURL", newsImageUrl);
-        bundle.putString("newsURL",newsurl);
+        bundle.putString("newsURL", newsurl);
 
 
         intent.putExtras(bundle);
@@ -354,9 +350,8 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
     public void onnewsfeedrecentfound(boolean status, List<NewsfeedRecent.DataBean> response) {
 
 
-
         if (response != null) {
-            dataBeansrecent=response;
+            dataBeansrecent = response;
             adapterHorizontall = new NewsfeedAdapter_horizontall(response, getApplicationContext(), this);
             recyclerViewhorizonlall.setAdapter(adapterHorizontall);
             initView_Horizoll();
@@ -395,10 +390,10 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
         tvNote.setText(texthoriv);
         tvTimeAndDate.setText(textTimeDate);
 
-        String giventime =dataBeansrecent.get(NewsItemposition).getCreatedDatetime();
-        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String giventime = dataBeansrecent.get(NewsItemposition).getCreatedDatetime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            Date mdate =simpleDateFormat.parse(giventime);
+            Date mdate = simpleDateFormat.parse(giventime);
             long timeinmillseconds = mdate.getTime();
             String textago = TimeAgo.using(timeinmillseconds);
             tvTime.setText(textago);
@@ -418,5 +413,11 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
 
         dialog.show();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 }

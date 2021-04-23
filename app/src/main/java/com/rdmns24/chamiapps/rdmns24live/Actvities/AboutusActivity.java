@@ -8,16 +8,12 @@ import android.view.ViewTreeObserver;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.R;
 
 public class AboutusActivity extends AppCompatActivity {
@@ -27,7 +23,8 @@ public class AboutusActivity extends AppCompatActivity {
 
     Context mContext;
 
-    private AdView madView;
+//    private AdView madView;
+    private LinearLayout banner_container;
 
     //SwipeRefreshLayout mswipeRefreshLayout;
    // private ViewTreeObserver.OnScrollChangedListener mOnScrollChangedListener;
@@ -41,19 +38,21 @@ public class AboutusActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         mProgressBar = findViewById(R.id.idprogessbar);
         mWebView = findViewById(R.id.idwebview);
+        banner_container = findViewById(R.id.banner_container);
        //mswipeRefreshLayout = findViewById(R.id.swipetorefersh);
 
         mContext = getApplicationContext();
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        madView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+        AdsUtils.adsShow(this,banner_container);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        madView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
 
 
         renderWebPage("http://app.rdmns.lk/");
@@ -125,5 +124,11 @@ public class AboutusActivity extends AppCompatActivity {
         super.onBackPressed();
 
         overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 }

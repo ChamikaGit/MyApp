@@ -28,8 +28,8 @@ android {
 
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 11
-        versionName "2.0.11"
+        versionCode 12
+        versionName "2.0.12"
         multiDexEnabled true
         project.ext.set("archivesBaseName", "rdmns-v" + defaultConfig.versionName + "_" + defaultConfig.versionCode + "-" + new Date().format('yyyyMMdd'))
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -76,12 +76,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.github.marlonlom:timeago:4.0.3'
 //    implementation 'com.chootdev:timezago:1.1.8'
-    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+//    implementation 'com.google.android.gms:play-services-ads:19.6.0'
     implementation 'com.github.hotchemi:android-rate:1.0.1'
     implementation 'com.github.whalemare:sheetmenu:1.3.6'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
-    implementation 'com.facebook.android:audience-network-sdk:5.8.0'
-    implementation 'com.google.ads.mediation:facebook:6.2.0.1'
+    implementation 'com.facebook.android:audience-network-sdk:6.2.0'
+    implementation 'androidx.annotation:annotation:1.0.0'
+//    implementation 'com.google.ads.mediation:facebook:6.2.0.1'
 //    implementation 'com.google.android.ads:mediation-test-suite:1.5.0'
 
 

@@ -7,19 +7,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Helpers.Consts;
 import com.rdmns24.chamiapps.rdmns24live.R;
 import com.squareup.picasso.Picasso;
@@ -30,12 +24,11 @@ public class NewsfeeddetailsActvity extends AppCompatActivity {
     private ImageView imgPoster;
     private TextView textViewtoolbarname;
     ImageView imageViewbackarrow;
+    private LinearLayout banner_container;
 
 
-    private AdView madView;
+    //    private AdView madView;
     Bundle bundle;
-
-    private InterstitialAd minterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,19 +56,21 @@ public class NewsfeeddetailsActvity extends AppCompatActivity {
         imgPoster = findViewById(R.id.idNewsImage);
         textViewtoolbarname = findViewById(R.id.toobnewsdetailsname);
         imageViewbackarrow = findViewById(R.id.idnewsdetailsbackarrow);
+        banner_container = findViewById(R.id.banner_container);
 
+        AdsUtils.adsShow(this,banner_container);
 //        minterstitialAd = new InterstitialAd(this);
 //        minterstitialAd.setAdUnitId("ca-app-pub-8434077743160830/7053187305");
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        madView = findViewById(R.id.adView);
-        final AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        madView = findViewById(R.id.adView);
+//        final AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
         //minterstitialAd.loadAd(adRequest);
 
 //        minterstitialAd.setAdListener(new AdListener() {
@@ -174,6 +169,12 @@ public class NewsfeeddetailsActvity extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 
 }

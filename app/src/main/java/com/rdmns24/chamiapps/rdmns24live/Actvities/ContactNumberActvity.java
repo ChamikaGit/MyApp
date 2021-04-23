@@ -10,16 +10,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.R;
 
 public class ContactNumberActvity extends AppCompatActivity {
@@ -27,7 +24,8 @@ public class ContactNumberActvity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private WebView mWebView;
     private Context mContext;
-    private AdView madView;
+    private LinearLayout banner_container;
+//    private AdView madView;
 
 
     @Override
@@ -38,19 +36,22 @@ public class ContactNumberActvity extends AppCompatActivity {
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         mProgressBar = findViewById(R.id.idprogessbar);
         mWebView = findViewById(R.id.idwebview);
+        banner_container = findViewById(R.id.banner_container);
         //mswipeRefreshLayout = findViewById(R.id.swipetorefersh);
 
         mContext = getApplicationContext();
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
+        AdsUtils.adsShow(this,banner_container);
 
-            }
-        });
-        madView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        madView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        madView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        madView.loadAd(adRequest);
 
 
         renderWebPage("http://rdmns.lk/stationinfo/");
@@ -128,5 +129,11 @@ public class ContactNumberActvity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         renderWebPage("http://rdmns.lk/stationinfo/");
+    }
+
+    @Override
+    protected void onDestroy() {
+        AdsUtils.adsDestroy();
+        super.onDestroy();
     }
 }

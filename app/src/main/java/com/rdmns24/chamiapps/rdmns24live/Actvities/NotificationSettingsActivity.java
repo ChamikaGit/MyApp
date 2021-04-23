@@ -12,19 +12,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.onesignal.OneSignal;
+import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.Models.NotificationPost;
 import com.rdmns24.chamiapps.rdmns24live.Models.Notificationstatus;
 import com.rdmns24.chamiapps.rdmns24live.Models.TrainLines;
@@ -46,7 +42,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     private SwitchCompat switch1, switch2, switch3, switch4, switch5;
     private Sharedprefernce sharedprefernce;
     private String ssw1, ssw2, ssw3, ssw4, ssw5;
-    private AdView adView;
+//    private AdView adView;
     private String oneSignalPlayerId;
     private Getrdmnspushnotificationsync getrdmnspushnotificationsync;
     private Postrdmnspushnotificationsync postrdmnspushnotificationsync;
@@ -56,6 +52,7 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     private JSONObject Posttags;
     private String line1 = "1", line2 = "1", line3 = "1", line4 = "1", line5 = "1";
     static AlertDialog alertDialog;
+    private LinearLayout banner_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +69,17 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         tv5 = findViewById(R.id.tv5);
         tvSubmit = findViewById(R.id.tvSubmit);
 
-        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+//        MobileAds.initialize(getApplicationContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//
+//            }
+//        });
+//        adView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        adView.loadAd(adRequest);
+        banner_container = findViewById(R.id.banner_container);
+        AdsUtils.adsShow(this,banner_container);
 
         switch1 = findViewById(R.id.switch1);
         switch2 = findViewById(R.id.switch2);
@@ -320,8 +319,8 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     @Override
     public void onPostPushNotification(boolean status, NotificationPost response) {
 
-        if (response.getMessage().equals("success_update")){
-            showAlert(this,"");
+        if (response.getMessage().equals("success_update")) {
+            showAlert(this, "");
         }
 
     }
@@ -382,10 +381,14 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         }
     }
 
-//    JSONObject tags = new JSONObject();
+    //    JSONObject tags = new JSONObject();
 //	tags.put("key1", "value1");
 //	tags.put("key2", "value2");
 //	OneSignal.sendTags(tags);
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AdsUtils.adsDestroy();
+    }
 
 }

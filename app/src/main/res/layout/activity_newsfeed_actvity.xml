@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,114 +8,135 @@
     android:orientation="vertical"
     tools:context="com.rdmns24.chamiapps.rdmns24live.Actvities.NewsfeedActvity">
 
-    <include layout="@layout/toolbar_news"
-        android:id="@+id/toolbar_news"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:gravity="left"
-            android:text="Recent Notifications"
-            android:textColor="@android:color/white"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="5dp"
-            android:gravity="right"
-            android:text="Show All "
-            android:id="@+id/idshowall"
-            android:textColor="@android:color/white"
-            android:textSize="15sp" />
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/horizanleLine1"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:src="@drawable/horizontal_line" />
-
-    <ProgressBar
-        android:id="@+id/pbProgressbarhori"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_vertical"
-        android:layout_marginTop="5dp"
-        android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleRecent_news"
-        android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:layout_marginTop="1dp">
-
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <ImageView
-        android:id="@+id/horizanleLine12"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:src="@drawable/horizontal_line" />
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        android:layout_gravity="center"
-        ads:adUnitId="@string/admob_banner_unit_id">
-    </com.google.android.gms.ads.AdView>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="RDMNS News Feed"
-        android:textColor="@android:color/white" />
-
-
-    <ProgressBar
-        android:id="@+id/pbProgressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_vertical"
-        android:layout_marginTop="5dp"
-        android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleAll_news"
+    <LinearLayout
+        android:id="@+id/layoutContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_above="@+id/banner_container"
+        android:orientation="vertical">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <include
+            android:id="@+id/toolbar_news"
+            layout="@layout/toolbar_news" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:gravity="left"
+                android:text="Recent Notifications"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/idshowall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"
+                android:gravity="right"
+                android:text="Show All "
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/horizanleLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/horizontal_line" />
+
+        <ProgressBar
+            android:id="@+id/pbProgressbarhori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginTop="5dp"
+            android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
 
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleRecent_news"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_marginTop="1dp">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/horizanleLine12"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/horizontal_line" />
+
+        <!--    <com.google.android.gms.ads.AdView-->
+        <!--        xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+        <!--        android:id="@+id/adView"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="5dp"-->
+        <!--        android:background="@android:color/black"-->
+        <!--        android:layout_centerHorizontal="true"-->
+        <!--        android:layout_alignParentBottom="true"-->
+        <!--        ads:adSize="BANNER"-->
+        <!--        android:layout_gravity="center"-->
+        <!--        ads:adUnitId="@string/admob_banner_unit_id">-->
+        <!--    </com.google.android.gms.ads.AdView>-->
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="RDMNS News Feed"
+            android:textColor="@android:color/white" />
+
+
+        <ProgressBar
+            android:id="@+id/pbProgressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:layout_marginTop="5dp"
+            android:indeterminateTint="@android:color/holo_red_dark"></ProgressBar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleAll_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</RelativeLayout>
