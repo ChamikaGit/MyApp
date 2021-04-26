@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private VideoView mvideoView;
-    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus, mImgbtnlostandfound, mImgbtnrailwaysecurity, mImgbtncontactnumbers, mImgbtncomplain;
+    private ImageButton mImgbtnnewsfeed, mImgbtntimetable, mImgbtnNotification, mImgbtnsubmitnews, mImgbtnaboutus, mImgbtnlostandfound, mImgbtnrailwaysecurity, mImgbtncontactnumbers, mImgbtncomplain,mImgbtnRadar;
     View sbView;
     boolean misConnected;
     private Sharedprefernce sharedprefernce;
@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnrailwaysecurity = findViewById(R.id.btnrailwaysecurity);
         mImgbtncontactnumbers = findViewById(R.id.btncontactnumbers);
         mImgbtncomplain = findViewById(R.id.btncomplaints);
+        mImgbtnRadar = findViewById(R.id.btnRadar);
 
         mImgbtnnewsfeed.setOnClickListener(this);
         mImgbtnNotification.setOnClickListener(this);
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgbtnrailwaysecurity.setOnClickListener(this);
         mImgbtncontactnumbers.setOnClickListener(this);
         mImgbtncomplain.setOnClickListener(this);
+        mImgbtnRadar.setOnClickListener(this);
 
 
 //        OneSignal.setSubscription(true);
@@ -291,6 +293,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
+                break;
+
+            case R.id.btnRadar:
+                if (isOnline()) {
+                    Intent intentTransTracking = new Intent(MainActivity.this, TrainTrackingActivity.class);
+                    startActivity(intentTransTracking);
+                } else {
+                    snakbar();
+                }
                 break;
         }
     }

@@ -53,19 +53,29 @@
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/btnTimetable"
-                android:adjustViewBounds="true"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/imgtraineshedule" />
-
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
                 android:id="@+id/btnNotifcation"
                 android:adjustViewBounds="true"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/imglivenotification"
                 />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/btnRadar"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/imgradar" />
+
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/btnTimetable"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/imgtraineshedule" />
+
 
             <ImageButton
                 android:layout_width="match_parent"
