@@ -10,14 +10,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rdmns24.chamiapps.rdmns24live.R;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 
 import java.security.MessageDigest;
+
+import pl.droidsonroids.gif.GifImageView;
 
 public class Splashscreen extends AppCompatActivity {
 
@@ -30,6 +34,9 @@ public class Splashscreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
         getSupportActionBar().hide();
+        GifImageView gifImageView = findViewById(R.id.gifImageView);
+        gifImageView.setVisibility(View.GONE);
+
 //        videoView = (VideoView) findViewById(R.id.videoView);
 //        Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.startup);
 //        videoView.setVideoURI(video);

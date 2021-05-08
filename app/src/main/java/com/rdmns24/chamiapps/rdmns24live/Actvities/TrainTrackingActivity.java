@@ -141,6 +141,7 @@ public class TrainTrackingActivity extends AppCompatActivity {
                 if (newProgress == 100) {
                     // Hide the progressbar
 //                    mProgressBar.setVisibility(View.GONE);
+                    mWebView.setVisibility(View.VISIBLE);
                     progressDialog.dismiss();
                 }
             }
