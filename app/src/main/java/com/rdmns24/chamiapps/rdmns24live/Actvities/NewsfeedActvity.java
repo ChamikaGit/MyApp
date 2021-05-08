@@ -38,6 +38,7 @@ import com.rdmns24.chamiapps.rdmns24live.Models.NewsfeedRecent;
 import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewsrecentsync;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewssync;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,6 +57,7 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
     private NewsfeedAdapter newsfeedAdapter;
     private NewsfeedAdapter_horizontall adapterHorizontall;
     private ProgressBar progressBarvertcal, progressbarhori;
+    private CustomProgressDialog progressDialog;
     private TextView textViewshowall;
     private ImageView imageViewthreedots;
 
@@ -71,6 +73,8 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed_actvity);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        progressDialog = new CustomProgressDialog(this);
+        progressDialog.show();
 
 
 //        //chage statusbar iconcolors
@@ -276,10 +280,13 @@ public class NewsfeedActvity extends AppCompatActivity implements Getrdmnsnewssy
             initView();
 
             progressBarvertcal.setVisibility(View.GONE);
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
 
         } else {
 
-
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
             Toast.makeText(getApplicationContext(), "Can't Connect with API", Toast.LENGTH_LONG).show();
         }
 

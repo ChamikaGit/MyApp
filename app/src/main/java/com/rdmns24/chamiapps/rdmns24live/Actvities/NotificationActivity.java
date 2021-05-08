@@ -21,6 +21,7 @@ import com.rdmns24.chamiapps.rdmns24live.Holders.TraineLineAdpter;
 import com.rdmns24.chamiapps.rdmns24live.Models.TrainLines;
 import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnstrainlinesync;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,17 +33,19 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
     private List<TrainLines.DataBean> dataBeans;
     private List<TrainLines.DataBean> dataLine = new ArrayList<>();
     private RecyclerView recyclerViewtrain;
-    private ProgressBar progressBar;
+//    private ProgressBar progressBar;
 //    private AdView madView;
     private RelativeLayout idbtnsettings;
     private ImageView idbackarrow;
     private LinearLayout banner_container;
+    private CustomProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
+        progressDialog =  new CustomProgressDialog(this);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //
@@ -60,13 +63,14 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
 //        }
 
         recyclerViewtrain = findViewById(R.id.recycleviewtrainList);
-        progressBar = findViewById(R.id.pbProgressbarTrainline);
+//        progressBar = findViewById(R.id.pbProgressbarTrainline);
         idbtnsettings= findViewById(R.id.idbtnsettings);
         idbackarrow = findViewById(R.id.idbackarrow);
 
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
         idbtnsettings.setVisibility(View.VISIBLE);
         banner_container = findViewById(R.id.banner_container);
+        progressDialog.show();
 
         AdsUtils.adsShow(this,banner_container);
 
@@ -113,8 +117,10 @@ public class NotificationActivity extends AppCompatActivity implements Getrdmnst
             traineLineAdpter = new TraineLineAdpter(response, getApplicationContext(), this);
             recyclerViewtrain.setAdapter(traineLineAdpter);
             initView();
-            progressBar.setVisibility(View.GONE);
+//            progressBar.setVisibility(View.GONE);
+            progressDialog.dismiss();
         } else {
+            progressDialog.dismiss();
             Toast.makeText(getApplicationContext(), "Can't Connect with API", Toast.LENGTH_LONG).show();
         }
 

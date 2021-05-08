@@ -18,10 +18,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.R;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 
 public class ContactNumberActvity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
+    private CustomProgressDialog progressDialog;
     private WebView mWebView;
     private Context mContext;
     private LinearLayout banner_container;
@@ -37,6 +39,7 @@ public class ContactNumberActvity extends AppCompatActivity {
         mProgressBar = findViewById(R.id.idprogessbar);
         mWebView = findViewById(R.id.idwebview);
         banner_container = findViewById(R.id.banner_container);
+        progressDialog =  new CustomProgressDialog(this);
         //mswipeRefreshLayout = findViewById(R.id.swipetorefersh);
 
         mContext = getApplicationContext();
@@ -65,7 +68,8 @@ public class ContactNumberActvity extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 // Do something on page loading started
                 // Visible the progressbar
-                mProgressBar.setVisibility(View.VISIBLE);
+//                mProgressBar.setVisibility(View.VISIBLE);
+                progressDialog.show();
             }
 
             @Override
@@ -78,7 +82,8 @@ public class ContactNumberActvity extends AppCompatActivity {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 super.onReceivedError(view, errorCode, description, failingUrl);
 
-                mWebView.setVisibility(View.GONE);
+//                mWebView.setVisibility(View.GONE);
+                progressDialog.dismiss();
 
             }
 
@@ -101,10 +106,11 @@ public class ContactNumberActvity extends AppCompatActivity {
 
             public void onProgressChanged(WebView view, int newProgress) {
                 // Update the progress bar with page loading progress
-                mProgressBar.setProgress(newProgress);
+//                mProgressBar.setProgress(newProgress);
                 if (newProgress == 100) {
                     // Hide the progressbar
-                    mProgressBar.setVisibility(View.GONE);
+//                    mProgressBar.setVisibility(View.GONE);
+                    progressDialog.dismiss();
                 }
             }
 

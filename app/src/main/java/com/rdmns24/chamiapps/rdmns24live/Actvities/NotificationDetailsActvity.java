@@ -27,6 +27,7 @@ import com.rdmns24.chamiapps.rdmns24live.Holders.TraineLineNotificationAdapter;
 import com.rdmns24.chamiapps.rdmns24live.Models.TraineLinesNotifications;
 import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnotificationsync;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
     private Getrdmnsnotificationsync getrdmnsnotificationsync;
     private List<TraineLinesNotifications.DataBean> dataNotification = new ArrayList<>();
     private RecyclerView recyclerViewNotificaion;
-    private ProgressBar progressBar;
+//    private ProgressBar progressBar;
+    private CustomProgressDialog progressDialog;
     public String steDate, month, year, SystemTime;
     CountDownTimer newtimer;
     TextView mtvTime, tv_date, tv_monthhandyear, tvyear;
@@ -77,7 +79,7 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
 //        }
 
         recyclerViewNotificaion = findViewById(R.id.recycleviewNotificationDetails);
-        progressBar = findViewById(R.id.pbProgressbarNotification);
+//        progressBar = findViewById(R.id.pbProgressbarNotification);
         mtvTime = findViewById(R.id.tvtime);
         tv_date = findViewById(R.id.tvdate);
         tv_monthhandyear = findViewById(R.id.tvmnth);
@@ -85,6 +87,7 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
         textViewtoobarname = findViewById(R.id.toobarname);
         imageViewarrow = findViewById(R.id.idbackarrow);
         banner_container = findViewById(R.id.banner_container);
+        progressDialog =  new CustomProgressDialog(this);
         AdsUtils.adsShow(this,banner_container);
 
         //minterstitialAd = new InterstitialAd(this);
@@ -109,7 +112,8 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
             }
         });
 
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
+        progressDialog.show();
 
         timeSet();
         //LoadJson
@@ -196,10 +200,12 @@ public class NotificationDetailsActvity extends AppCompatActivity implements Get
             traineLineNotificationAdapter = new TraineLineNotificationAdapter(response, getApplicationContext(), this);
             recyclerViewNotificaion.setAdapter(traineLineNotificationAdapter);
             initView();
-            progressBar.setVisibility(View.GONE);
+//            progressBar.setVisibility(View.GONE);
+            progressDialog.dismiss();
 
 
         } else {
+            progressDialog.dismiss();
             Toast.makeText(getApplicationContext(), "Can't Connect with API", Toast.LENGTH_LONG).show();
         }
     }

@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         android:layout_below="@+id/toolbar_notification"
         android:indeterminateTint="@android:color/holo_red_dark">
 

@@ -29,6 +29,7 @@ import com.rdmns24.chamiapps.rdmns24live.R;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnslostfoundsync;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewsrecentsync;
 import com.rdmns24.chamiapps.rdmns24live.Services.API.Sync.Getrdmnsnewssync;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
@@ -47,7 +48,8 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
     private RecyclerView recylerview_lostfound;
     private LoastandfoundAdapter loastandfoundAdapter;
     private ArrayList<LostfoundItem> lostfoundItemArrayList;
-    private ProgressBar pbLostFound;
+//    private ProgressBar pbLostFound;
+    private CustomProgressDialog progressDialog;
     private ImageView idbackarrow,idthreedots,imgheader;
 //    private AdView adView;
 
@@ -59,14 +61,15 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
         overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out);
         toobarname = findViewById(R.id.toobarname);
         recylerview_lostfound = findViewById(R.id.recylerview_lostfound);
-        pbLostFound = findViewById(R.id.pbProgressbarNotification);
+//        pbLostFound = findViewById(R.id.pbProgressbarNotification);
         idbackarrow = findViewById(R.id.idbackarrow);
         idthreedots = findViewById(R.id.idthreedots);
         imgheader = findViewById(R.id.imgheader);
         banner_container =  findViewById(R.id.banner_container);
+        progressDialog =  new CustomProgressDialog(this);
+        progressDialog.show();
 
-
-        pbLostFound.setVisibility(View.VISIBLE);
+//        pbLostFound.setVisibility(View.VISIBLE);
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -125,7 +128,8 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
 //            initView_Horizoll();
 //            progressbarhori.setVisibility(View.GONE);
 
-            pbLostFound.setVisibility(View.GONE);
+//            pbLostFound.setVisibility(View.GONE);
+            progressDialog.dismiss();
 
             for (int i=0;i<dataBeansrecent.size();i++){
 
@@ -138,6 +142,7 @@ public class LostAndFoundActvity extends AppCompatActivity implements Getrdmnslo
             }
 
         } else {
+            progressDialog.dismiss();
             Toast.makeText(getApplicationContext(), "Can't Connect with API", Toast.LENGTH_LONG).show();
         }
 

@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import com.rdmns24.chamiapps.rdmns24live.Ads.AdsUtils;
 import com.rdmns24.chamiapps.rdmns24live.BuildConfig;
 import com.rdmns24.chamiapps.rdmns24live.R;
+import com.rdmns24.chamiapps.rdmns24live.widget.CustomProgressDialog;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,6 +32,7 @@ import java.util.Locale;
 public class TrainTrackingActivity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
+    private CustomProgressDialog progressDialog;
     private WebView mWebView;
     private Context mContext;
     private LinearLayout banner_container;
@@ -47,6 +49,7 @@ public class TrainTrackingActivity extends AppCompatActivity {
         mWebView = findViewById(R.id.idwebview);
         banner_container = findViewById(R.id.banner_container);
         mContext = getApplicationContext();
+        progressDialog =  new CustomProgressDialog(this);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm", Locale.getDefault());
         String currentDateTimeCode = sdf.format(new Date());
@@ -96,7 +99,8 @@ public class TrainTrackingActivity extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 // Do something on page loading started
                 // Visible the progressbar
-                mProgressBar.setVisibility(View.VISIBLE);
+//                mProgressBar.setVisibility(View.VISIBLE);
+                progressDialog.show();
             }
 
             @Override
@@ -110,6 +114,7 @@ public class TrainTrackingActivity extends AppCompatActivity {
                 super.onReceivedError(view, errorCode, description, failingUrl);
 
                 mWebView.setVisibility(View.GONE);
+                progressDialog.dismiss();
 
             }
 
@@ -135,7 +140,8 @@ public class TrainTrackingActivity extends AppCompatActivity {
                 mProgressBar.setProgress(newProgress);
                 if (newProgress == 100) {
                     // Hide the progressbar
-                    mProgressBar.setVisibility(View.GONE);
+//                    mProgressBar.setVisibility(View.GONE);
+                    progressDialog.dismiss();
                 }
             }
 
